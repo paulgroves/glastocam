@@ -1,0 +1,18 @@
+name: serverless-deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  serverless-deploy:
+    name: Serverless Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: helloworld
+        run: echo "HelloWorld!"
