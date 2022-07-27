@@ -256,19 +256,6 @@
     });
     ga('panomax.send', 'pageview');
     </script>
-
-    <script>
-    function inIframe() {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
-        }
-    }
-    if (!inIframe()) {
-        window.location.href = 'http://www.bbc.co.uk/music/festivals/glastonbury/webcam?frontentry=https%3A%2F%2Fglastocam.panomax.com';
-    }
-    </script>
 </head>
 
 <body class="initial-load " onload="preload()">
