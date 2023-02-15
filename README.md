@@ -1,7 +1,5 @@
 # Fullscreen Glasto Webcam
 
-https://glastocam.grov.es
-
 ## Run locally
 
 1. Copy and paste `glasto_webcam.html` below into a new file (or click on `Download Zip` top right and open it from there)
