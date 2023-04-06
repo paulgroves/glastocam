@@ -1,3 +1,2223 @@
-<h1><a
-        href="https://eratechnologieslimited.grafana.net/d/rXlc1FLVk/era-marketplace?orgId=1&from=1680756582903&to=1680778182903">GRAFANA</a>
-</h1>
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui, viewport-fit=cover" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui"/> -->
+    <title>Webcam Glastonbury - Festival - PANOMAX 360°</title>
+
+    <link rel="icon" type="image/x-icon" href="https://static.panomax.com/img/panomax/fav.ico" />
+    <link rel="icon" type="image/png" href="https://static.panomax.com/img/panomax/favicon.png" />
+
+    <meta property="og:image" content="https://panodata.panomax.com/cams/879/preview_og.jpg?x=1677751530" />
+    <meta name="description"
+        content="Live picture of Glastonbury - Festival - Panomax - 360° high resolution interactive panorama web cam" />
+
+    <link rel="apple-touch-icon" href="https://client-static.panomax.com/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://client-static.panomax.com/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120"
+        href="https://client-static.panomax.com/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="https://client-static.panomax.com/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://client-static.panomax.com/img/apple-touch-icon-180x180.png">
+
+    <link href="https://client-static.panomax.com/themes/default/fonts.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://client-static.panomax.com/themes/default/theme.css?t=1677697136"
+        type="text/css" />
+
+    <!-- Device detection -->
+    <script src="https://client-static.panomax.com/js/mobile-detect.min.js?t=1677751530"></script>
+    <script>
+        var md = new MobileDetect(window.navigator.userAgent);
+        /**
+         * Inserts a node directly after a node.
+         *
+         * @param {Node} newNode
+         * @param {Node} referenceNode
+         */
+        function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+    </script>
+    <script>
+        //get query string
+        var queryString = location.href.split('?');
+        queryString.push("r=890&tl=-1000&z=1000&autopan=0");
+        queryString = (queryString < 2) ? null : queryString[1];
+        // remove trailing hashtag
+        if (queryString != undefined) {
+            queryString = queryString.replace(new RegExp("#$"), "");
+        }
+        // parse query string
+
+        var queryParts = {};
+        try {
+            queryParts = queryString.split("&");
+            var result = {};
+            for (var i = 0; i < queryParts.length; i++) {
+                try {
+                    var part = queryParts[i].split("=");
+                    result[part[0]] = decodeURIComponent(part[1]);
+                } catch (err) { }
+            }
+            queryParts = result;
+        } catch (err) {
+            queryParts = {};
+        }
+
+        // frontend parameters from query
+
+        feparams = {
+            query: queryString
+        };
+        if (queryParts.t != undefined) {
+            try {
+                feparams.initime = queryParts.t.split(/[\s+_]/g);
+                feparams.initime = feparams.initime[0] + " " + feparams.initime[1].replace(/-/g, ":");
+            } catch (error) {
+                feparams.initime = "1970-01-01 00:00:00";
+            }
+        }
+        //for compare pano feature 
+        if (queryParts.tsl != undefined) {
+            try {
+                feparams.initimeL = queryParts.tsl.split(/[\s+_]/g);
+                feparams.initimeL = feparams.initimeL[0] + " " + feparams.initimeL[1].replace(/-/g, ":");
+            } catch (error) {
+                feparams.initimeL = "1970-01-01 00:00:00";
+            }
+        }
+        if (queryParts.tsr != undefined) {
+            try {
+                feparams.initimeR = queryParts.tsr.split(/[\s+_]/g);
+                feparams.initimeR = feparams.initimeR[0] + " " + feparams.initimeR[1].replace(/-/g, ":");
+            } catch (error) {
+                feparams.initimeR = "1970-01-01 00:00:00";
+            }
+        }
+
+        //
+        if (queryParts.r != undefined)
+            feparams.inirotation = queryParts.r;
+        if (queryParts.z != undefined)
+            feparams.inizoom = queryParts.z;
+        if (queryParts.tl != undefined)
+            feparams.initilt = queryParts.tl;
+        if (queryParts.cid != undefined)
+            feparams.cid = queryParts.cid;
+        if (queryParts.test != undefined)
+            feparams.test = queryParts.test;
+        if (queryParts.local != undefined)
+            feparams.local = queryParts.local;
+        if (queryParts.debug != undefined)
+            feparams.debug = queryParts.debug;
+        if (queryParts.layout != undefined)
+            feparams.layout = queryParts.layout;
+        if (queryParts.cu != undefined)
+            feparams.cu = queryParts.cu;
+        if (queryParts.labeling != undefined)
+            feparams.labeling = queryParts.labeling;
+        if (queryParts.autopan != undefined)
+            feparams.autopan = queryParts.autopan;
+        if (queryParts.peak != undefined)
+            feparams.peak = queryParts.peak;
+        if (queryParts.hotspot != undefined)
+            feparams.hotspot = queryParts.hotspot;
+        if (queryParts.cache != undefined)
+            feparams.cache = queryParts.cache;
+        if (queryParts.weather != undefined)
+            feparams.weather = queryParts.weather;
+        if (queryParts.mode != undefined)
+            feparams.mode = queryParts.mode;
+        if (queryParts.preview != undefined)
+            feparams.preview = queryParts.preview;
+        if (queryParts.vessels != undefined)
+            feparams.vessels = queryParts.vessels;
+        if (queryParts.livestream != undefined)
+            feparams.livestream = queryParts.livestream;
+        if (queryParts.audio != undefined)
+            feparams.audio = queryParts.audio;
+        if (queryParts.zoomslider != undefined)
+            feparams.zoomslider = queryParts.zoomslider;
+        if (queryParts.compass != undefined)
+            feparams.compass = queryParts.compass;
+        if (queryParts.zoomwheel != undefined)
+            feparams.zoomwheel = queryParts.zoomwheel;
+
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+
+        if (md.phone()) {
+            feparams.device = 'smartphone';
+        } else if (md.tablet()) {
+            feparams.device = 'tablet';
+        } else {
+            if (isIOS == true && navigator.maxTouchPoints != null) {
+                feparams.device = 'tablet';
+            } else {
+                if (navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+                    feparams.device = 'hybrid';
+                } else {
+                    feparams.device = 'desktop';
+                }
+            }
+        }
+
+        if (queryParts.device != undefined) {
+            feparams.device = queryParts.device;
+        }
+
+    </script>
+
+    <script type="text/javascript" language="JavaScript">
+        // image preloader
+        var imgUrl;
+        var liveImg = "https://live-image.panomax.com";
+        var panoImgUrl = "https://panodata.panomax.com";
+
+        if (queryParts.t != null) {
+            var ymdt = queryParts.t.split(/[\s+_]/g);
+            var ymd = ymdt[0].split("-");
+            imgUrl = panoImgUrl + "/cams/" + 879 + "/" + ymd[0] + "/" + ymd[1] + "/" + ymd[2] + "/" + ymdt[1] + "_reduced.jpg";
+        } else {
+            var camId = "879";
+            if (camId.length != 0) {
+                imgUrl = liveImg + "/cams/" + camId + "/recent_reduced.jpg";
+            }
+        }
+
+        function preload() {
+            var reducedImg = document.getElementById("reduced-image");
+            reducedImg.onload = function () {
+                reducedImg.setAttribute("style", "width: " + this.naturalWidth + "px");
+            }
+            reducedImg.style.backgroundImage = "url(" + imgUrl + ")";
+        }
+    </script>
+
+    <script id="themeDetection">
+        var node = document.getElementById('themeDetection');
+
+        if (feparams.device != 'desktop') {
+            var deviceTheme = document.createElement('link');
+            deviceTheme.rel = 'stylesheet';
+            deviceTheme.type = 'text/css';
+
+            if (feparams.device == 'smartphone') {
+                deviceTheme.href = 'https://client-static.panomax.com/themes/device/smartphone.css?t=1677751530';
+            } else if (feparams.device == 'tablet') {
+                deviceTheme.href = 'https://client-static.panomax.com/themes/device/tablet.css?t=1677751530';
+            }
+
+            if (deviceTheme.href != null) {
+                insertAfter(deviceTheme, node);
+            }
+        }
+
+        if (feparams.device != 'smartphone') {
+            var designTheme = document.createElement('link');
+            designTheme.rel = 'stylesheet';
+            designTheme.type = 'text/css';
+
+
+            designTheme.href = 'https://client-static.panomax.com/themes/generic/phunkyDark/theme.css?t=1677751530';
+
+            insertAfter(designTheme, node);
+        }
+    </script>
+
+
+</head>
+
+
+
+<body class="initial-load " onload="preload()">
+    <div id="quick-load">
+        <div id="reduced-image"></div>
+    </div>
+    <div id="pmax_panoManager">
+        <canvas id="pano-display" class="canvas">
+        </canvas>
+        <div id="video-display">
+            <video id="hls-video" playsinline autoplay muted type="application/vnd.apple.mpegurl"></video>
+        </div>
+        <div class="movement-container"></div>
+        <div id="compare-pano"></div>
+        <div id="peak-labels" class="canvas-wrapper">
+            <canvas class="canvas"></canvas>
+        </div>
+        <div id="peak-instance-search">
+            <span class="search-label"></span>
+            <ul></ul>
+        </div>
+        <div class="direction-marks-container">
+            <div class="direction-marks"></div>
+        </div>
+    </div>
+    <div id="pmaxGui"></div>
+
+    <div id="missingInstancePreloader" style="display:none;">
+        <script type="text/html" id="notFoundError">
+        <div class="header">
+            <a href="https://www.panomax.com"><img src="https://static.panomax.com/img/panomax/logo-entrypages.png" /></a>
+        </div>  
+        <div class="error not-found-error">
+                 <!-- <h1>Location not found</h1>
+                <p>The entered address doesn't match any of our locations.</p> -->
+                <div class="error-txt">We're sorry. This camera doesn't exist.</div>
+                <div class="url-text"></div>
+            <div class="search-form">
+					<div class="search">
+						<input class="searchfield" type="text" id="instanceName" placeholder="Search panoramas...">
+						<button class="search-close"></button>
+					</div>
+			        <div class="nearest-solution ">Did you mean:</div>
+	                <div id="content-box" class="search-solution search-image">
+                    </div>
+                    <div class="search-overlay"><div>Loading...</div>
+                    </div>
+					<div class="icons">
+						<div class="icons-div">
+						    <a id="allCamsLink" href= "" target="_blank"><div class="allCams"></div></a>
+							<a id="appInstLink" href= "" target="_blank"><div class="installApp"></div></a>
+						</div>		
+					</div>
+                    <div class="title">
+			            <div class="titles-div">
+				            <div class="all-cams-title">ALL CAMS</div>
+					    <div class="install-app-title">INSTALL APP</div>
+				    </div>
+                    <p class="copyright">Copyright © 2023 by Panomax GmbH</p>	
+		        </div>
+					<div style="clear: both;"></div>
+                </div>
+        </div>
+        </script>
+    </div>
+    <div id="startPreloader" class="ui-widget" style="display:none;"></div>
+
+    <script type="text/html" id="startPreloadTemplate">
+        <span class="text">Loading...</span>
+        <div class="progress-bar">
+            <div class="progress-bar-value"></div>
+        </div>
+        <p class="error error-erroneous">Failed to load data.    </script>
+
+
+    <script type="text/html" id="pmaxGuiTemplate">
+        <div class="swipe">Swipe to right for removing</div>
+        <div id="maintenance-dialogue">
+            <div class="info-title"></div>
+            <div class="info-text"></div>
+            <button class="close-info-text close-btn" title="close"></button>
+            <div id="overlay-gradient" class="overlay-gradient-closed"></div>
+        </div>
+
+        <div id="compare-pano-template" style="display: none;">
+            <div class="compare-pano-container" id="compare-pano-left-container"></div>
+            <div class="compare-pano-container" id="compare-pano-right-container"></div>
+            <div class="compare-pano-divider">
+                <div class="compare-pano-divider-line"></div>
+                <div class="compare-pano-divider-arrows">
+                    <div class="compare-pano-divider-arrow-left"></div>
+                    <div class="compare-pano-divider-arrow-right"></div>
+                </div>
+            </div>
+        </div>
+        <div id="compare-pano-container-template" style="display: none;">
+            <canvas class="canvas"></canvas>
+            <a href="#" class="compare-pano-open"></a>
+            <div class="compare-pano-timeline pano-timeline">
+                <div class="time-display">
+                    <ul class="range-selection">
+                        <li class="range day"><a href="#" data-range="day">
+                                <#=get('rangeDay')#>
+                            </a></li>
+                        <li class="range week"><a href="#" data-range="week">
+                                <#=get('rangeWeek')#>
+                            </a></li>
+                        <li class="range month"><a href="#" data-range="month">
+                                <#=get('rangeMonth')#>
+                            </a></li>
+                    </ul>
+                    <div class="display current">
+                        <div class="event-blocker"></div>
+                        <div class="year"><span class="label">0000</span>
+                            <select class="mobile-select"></select>
+
+                            <div class="select select-wrapper">
+                                <div class="scroll-wrapper">
+                                    <div class="scroll-handle-up"></div>
+                                    <div class="scroll-handle-down"></div>
+                                    <div class="wrapper">
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day"><span class="label">1</span>
+                            <select class="mobile-select"></select>
+
+                            <div class="select select-wrapper">
+                                <div class="scroll-wrapper">
+                                    <div class="scroll-handle-up"></div>
+                                    <div class="scroll-handle-down"></div>
+                                    <div class="wrapper">
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time"><span class="label">12:00</span></div>
+                    </div>
+                    <div class="display selection">
+                        <div class="year"><span class="label">0000</span></div>
+                        <div class="day"><span class="label">1</span></div>
+                        <div class="time"><span class="label">00:00</span></div>
+                    </div>
+                </div>
+                <div class="control previous disabled">
+                    <a href="#" class="arrow"></a>
+
+                    <div class="extended-control">
+                        <ul>
+                            <li class="range month"><a href="#" data-range="month">
+                                    <#=get('rangeMonth')#>
+                                </a></li>
+                            <li class="range week"><a href="#" data-range="week">
+                                    <#=get('rangeWeek')#>
+                                </a></li>
+                            <li class="range day active"><a href="#" data-range="day">
+                                    <#=get('rangeDay')#>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control next disabled">
+                    <a href="#" class="arrow"></a>
+
+                    <div class="extended-control">
+                        <ul>
+                            <li class="range month"><a href="#" data-range="month">
+                                    <#=get('rangeMonth')#>
+                                </a></li>
+                            <li class="range week"><a href="#" data-range="week">
+                                    <#=get('rangeWeek')#>
+                                </a></li>
+                            <li class="range day active"><a href="#" data-range="day">
+                                    <#=get('rangeDay')#>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-bar-container">
+                        <div class="timeline-bar-inner-container">
+                            <div class="indicator current" data-relative-position="1"></div>
+                            <div class="indicator selection" data-relative-position="1"></div>
+                            <div class="date-markers"></div>
+                            <ul class="timeline">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <div class="preview-inner-container">
+                        <div class="preview-image-container">
+                            <div class="preview">
+                                <img alt="<#=get('archivePreview')#>" />
+                            </div>
+                            <div class="preview-image-map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="compare-pano-date-container">
+                <div class="compare-pano-date-extra">
+                    <ul>
+                        <li class="separator">
+                            <a href="#" class="earliest">
+                                <#=get('earliest')#>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <a href="#" class="most-recent">
+                                <#=get('mostRecent')#>
+                            </a>
+                        </li>
+                        <li class="compare-year">
+                            <a href="#" class="previous" data-range="year"></a>
+                            <a href="#" class="next" data-range="year"></a>
+                            <#=get('rangeYear')#>
+                        </li>
+                        <li>
+                            <a href="#" class="previous" data-range="month"></a>
+                            <a href="#" class="next" data-range="month"></a>
+                            <#=get('rangeMonth')#>
+                        </li>
+                        <li>
+                            <a href="#" class="previous" data-range="week"></a>
+                            <a href="#" class="next" data-range="week"></a>
+                            <#=get('rangeWeek')#>
+                        </li>
+                        <li>
+                            <a href="#" class="previous" data-range="day"></a>
+                            <a href="#" class="next" data-range="day"></a>
+                            <#=get('rangeDay')#>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="compare-pano-date-selector">
+                    <div class="date-container">
+                        <span class="date-backward"></span><span class="date"></span><span class="date-forward"></span>
+                    </div>
+                    <div class="time-container">
+                        <span class="time-backward"></span><span class="time"></span><span class="time-forward"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="topBar">
+
+            <div class="bar">
+                <a id="iosBack"></a>
+
+                <a id="logo" target="_blank">
+                    <img alt="Logo" />
+                </a>
+                
+                <div class="notch">
+                    <div class="instlist" style="display: none;">
+                        <div class="toggle-container">
+                            <span class="opener">
+                           <!-- <#=get('more')#> -->
+                            </span>
+                            <ul>
+                                <li class="overview"><a href="#">
+                                    <#=get('launchOverviewMap')#>
+                                    </a>
+                                </li>
+                             </ul>
+                        </div>
+                    </div>
+                    <div class="instname"></div>
+                    <div class="div-border" style="display:none;"></div>
+                </div>
+                
+                <a id="centerLogo" target="_blank">
+                    <img alt="Logo" />
+                </a>
+
+                <ul id="topMenu"></ul>
+
+                <div class="right">
+                    <div id="smartphone-aboutLogo" style="display:none;">
+                        <a class="about-button" href="#" title="<#=format('$(ttabout$(domain))')#>" onclick="return false;">
+                            <img src="" alt="Logo" class="logo" />
+                            <img src="" alt="Logo" class="logo-hover" />
+                        </a>
+                        <a class="about-privacy-policy" href="<#=get('privacyPolicyHref')#>" target="_blank">
+                            <#=get('privacyPolicy')#>
+                        </a>
+                    </div>
+                    <div class="share-button">
+                        <a href="#" class="share-link menu-item">
+                        </a>
+                    </div>
+                    <div class="culture-flag-wrapper">
+                        <div class="culture"></div>
+                        <ul class="select"></ul>
+                    </div>
+                    <ul id="contentMenuAdditional" class="contmenu">
+                        <li id="video-link" class="menu-item hide">
+                            <a href='#'>
+                                <#=get("panoramaVideoLink")#>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="customer-item trigger menu-item no-hover">
+                        <a href='#' class="no-hover"></a>
+                    </div> 
+                    <ul id="contentMenuAdditionalDrop" class="contmenu">
+                    </ul>
+                    <a href="#" id="imageReport-only" class="image-report menu-item"></a>
+                    <div class="content-item trigger menu-item no-hover">
+                        <a href='#' class="no-hover"></a>
+                    </div> 
+                    <ul id="contentMenu" class="contmenu">
+                        <li class="menu-item">
+                            <a href="#" class="image-report"><#=get("imageReport")#></a>
+                        </li>
+                    </ul>
+                    <div id="placeholder" class="printshop-placeholder">
+                    </div>
+                    <a href="#" class="printshop-link" target="_blank">
+                        <div id="additionalMenu" class="contmenu printshop">
+                    
+                        </div>
+                    </a>
+                    <a class="fullscreen enter disabled" href="#" title="<#=get('ttEnterFullscreen')#>"></a>
+                </div>
+                <div class="edge"></div>
+            </div>
+        </div>
+
+        <a class="fullscreen exit disabled" href="#" title="<#=get('ttExitFullscreen')#>"></a>
+        <div id="bottomBar">
+            <div id="bottomFlyout">
+                <div id="aboutLogo">
+                    <a class="about-button" href="#" title="<#=format('$(ttabout$(domain))')#>" onclick="return false;">
+                        <img src="" alt="Logo" class="logo" />
+                        <img src="" alt="Logo" class="logo-hover" />
+                    </a>
+                    <a class="about-privacy-policy" href="<#=get('privacyPolicyHref')#>" target="_blank">
+                        <#=get('privacyPolicy')#>
+                    </a>
+                </div>
+                <div class="nav-container">
+                    <div class="rotation" title="<#=get('autoPan')#>">
+                        <span class="glow-effect"></span>
+                        <button class="ro-button"></button>
+                    </div>
+                    <div id="timeNav">
+                        <!--     
+			    -->
+                        <div class="year">
+                            <button title="<#=get('panoNext')#>" class="jump next" data-range="year">&nbsp;</button>
+                            <span class="year-txt">Year</span>
+                            <button title="<#=get('panoPrev')#>" class="jump previous" data-range="year">&nbsp;</button>
+                        </div>
+                        <!--     
+			    -->
+                        <div class="month">
+                            <button title="<#=get('panoNext')#>" class="jump next" data-range="month">&nbsp;</button>
+                            <span class="day-txt">Month</span>
+                            <button title="<#=get('panoPrev')#>" class="jump previous" data-range="month">&nbsp;</button>
+                        </div>
+                        <!--     
+			    -->
+                        <div class="day">
+                            <button title="<#=get('panoNext')#>" class="jump next" data-range="day">&nbsp;</button>
+                            <span class="day-txt">Day</span>
+                            <button title="<#=get('panoPrev')#>" class="jump previous" data-range="day">&nbsp;</button>
+                        </div>
+                        <!--     
+			    --><span class="date">00.00.0000</span>
+                        <!--
+			    -->
+                        <span class="time">00:00</span>
+                        <!--
+			    -->
+                        <button title="<#=get('panoPrev')#>" class="jump previous" data-range="time">&nbsp;</button>
+                        <!--
+                -->
+                        <button title="<#=get('panoNext')#>" class="jump next" data-range="time">&nbsp;</button>
+                        <!--
+                -->
+                        <!--
+                -->
+                        
+
+                        <div id="loadingIndicator">
+                            <!--
+                    --><span class="text">Loading...</span>
+                            <!--
+                    -->
+                            <div class="progress-bar">
+                                <!--
+                        -->
+                                <div class="progress-bar-value"></div>
+                                <!--
+                    -->
+                            </div>
+                            <!--
+                -->
+                        </div>
+                        <!--
+            -->
+                    </div>
+                    <div class="recent" title="<#=get('ttNow')#>">
+                        <button class="re-button"></button>
+                    </div>
+                    <div class="audio-control hide">
+                        <button></button>
+                    </div>
+                    <div class="download">
+                        <button title="<#=get('ttDownloadCurrentImage')#>" class="download-button"></button>
+                    </div>
+                </div>
+            </div>
+            <ul id="bottomMenu"></ul>
+            <div id="timelapseControl" class="control-panel">
+                <div class="center">
+                    <!-- <span class="title">
+                        <#=get('timelapse')#>
+                    </span> -->
+
+                    <div id="timelapsePeriodSelector">
+                        <div class="custom-button cp-menu-item">
+                            <a href="#" class="button icon-arrow-down">
+                                <span class="label">
+                                    <#=get('timelapseToday')#>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="popover">
+                            <!-- <div class="list-container">
+                                <ul class="list">
+                                </ul>
+                            </div> -->
+                            <div class="datepicker-label-container">
+                                <div class="label-wrapper">
+                                    <label for="timelapseFromDate" class="label">
+                                        <#=get('timelapseFrom')#>
+                                    </label>
+                                </div>
+                                <div class="label-wrapper">
+                                    <label for="timelapseToDate" class="label">
+                                        <#=get('timelapseTo')#>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="datepicker-container">
+                                <div class="left">
+                                    <!-- <label for="timelapseFromDate" class="label">
+                                        <#=get('timelapseFrom')#>
+                                    </label> -->
+                                    <input type="text" id="timelapseFromDate" class="text-input" />
+                                </div>
+                                <div class="right">
+                                    <!-- <label for="timelapseToDate" class="label">
+                                        <#=get('timelapseTo')#>
+                                    </label> -->
+                                    <input type="text" id="timelapseToDate" class="text-input" />
+                                </div>
+                            </div>
+                            <div class="start-custom-timelapse">
+                                <div class="start-button timelapseToggleButton"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <div class="popover-button"></div>
+                    </div>
+                    <div class="list-container">
+                        <ul class="list">
+                        </ul>
+                    </div>
+                    <div id="timelapseDownload">
+                        <div class="custom-button cp-menu-item">
+                            <button id="timelapseDownloadButton" class="button">
+                                <#=get('timelapseDownload')#>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="peakLabelsControl" class="control-panel">
+                <div class="center">
+                    <span class="title">
+                        <#=get('mountainPeak')#>
+                    </span>
+
+                    <div id="peakLabelsDistanceSlider">
+                        <div class="title">
+                            <#=get('peakLabelsSliderDistance')#>
+                                <span class="selection">
+                                    (<span class="min-value">2,5</span>
+                                    <#=get('unitKilometer')#>
+                                        –
+                                        <span class="max-value">14</span>
+                                        <#=get('unitKilometer')#>)
+                                </span>
+                        </div>
+                        <div class="slider gui-slider"></div>
+                    </div>
+                    <div id="peakLabelsElevationSlider">
+                        <div class="title">
+                            <#=get('peakLabelsSliderElevation')#>
+                                <span class="selection">
+                                    (<span class="min-value">2.000</span>
+                                    <#=get('unitMeter')#>
+                                        –
+                                        <span class="max-value">5.000</span>
+                                        <#=get('unitMeter')#>)
+                                </span>
+                        </div>
+                        <div class="slider gui-slider"></div>
+                    </div>
+                    <div id="peakLabelsShowElevation">
+                        <button class="icon">&nbsp;</button>
+                        <!--
+                    -->
+                        <div class="title">
+                            <#=get('peakLabelsElevationShow')#>
+                        </div>
+                    </div>
+                    <div id="peakLabelsSearch">
+                        <div class="search-box">
+                            <div class="button">
+                                <button class="icon">&nbsp;</button>
+                                <div class="title">
+                                    <#=get('search')#>
+                                </div>
+                            </div>
+                            <div class="popover">
+                                <div class="list-container">
+                                    <ul class="list">
+                                        <li class="item empty-result"><span class='name'>
+                                                <#=get('noPeaksFound')#>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="search-container">
+                                    <div class="search-inner-container">
+                                        <input type="text" placeholder="<#=get('filter')#>" class="search-input" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="panoSlider" class="control-panel">
+                <div class="slider-bar-container">
+                    <div class="slider-bar"></div>
+                    <div class="slider-bar-handle"></div>
+                    <div class="slider-bar-ghost-handle"></div>
+                    <div class="slider-tooltip">
+                        <span class="slider-tooltip-time"></span>
+                        <span class="slider-tooltip-date"></span>
+                        <div class="slider-tooltip-pano-image"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="instanceListThumbnails"></div>
+            <div id="bottomSponsors"></div>
+            <div id="ticker">
+                <span class="content"></span>
+            </div>
+            <div class="edge"></div>
+        </div>
+
+        <!-- <div id="imageReportDialog" class="user-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar"> -->
+
+        <div id="eCardDialog" class="user-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <button class="close-button close-btn" role="button" aria-disabled="false" title="close">
+                </button>
+            </div>
+            <div id="ecard-header">
+                <div id="main-headline">
+                    <#=get('sendCard')#>
+                </div>
+                <div id="main-headline-live">
+                    <#=get('showLiveImage')#>
+                </div>
+            </div>
+            <form>
+                <div id="ecard-form">
+                    <p id="sender-title">
+                        <#=get('ecardSender')#>
+                    </p>
+                    <div class="ecard-input">
+                        <div>
+                            <input id="ecard-sender-email" class="left input-ok" type="text" placeholder="<#=get('ecardYourEmail')#>" />
+                            <span class="sender-error-msg">
+                                <#=get('ecardNoSenderEmail')#>
+                            </span>
+                        </div>
+                        <div>
+                            <input id="ecard-sender-name" class="right input-ok" type="text" placeholder="<#=get('ecardYourName')#>" />
+                        </div>
+                    </div>
+                    <p id="recipient-title">
+                        <#=get('ecardRecipient')#>
+                    </p>
+                    <div class="ecard-input">
+                        <div>
+                            <input id="ecard-recipient-email" class="left input-ok" type="text" placeholder="<#=get('ecardRecipientEmail')#>" />
+                            <span class="recipient-error-msg">
+                                <#=get('ecardNoRecepientEmail')#>
+                            </span>
+                        </div>
+                        <div>
+                            <input id="ecard-recipient-name" class="right input-ok" type="text" placeholder="<#=get('ecardRecipientName')#>" />
+                        </div>
+                    </div>
+                    <p id="ecard-title">
+                        <#=get('ecard')#>
+                    </p>
+                    <div class="ecard-input">
+                        <div>
+                            <input id="ecard-subject" class="left input-ok" type="text" placeholder="<#=get('ecardSubject')#>" />
+                            <span class="subject-error-msg">
+                                <#=get('ecardNoSubject')#>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="msg-input">
+                        <textarea id="ecard-message" class="message-ok" placeholder="<#=get('ecardMessage')#>"></textarea>
+                        <span class="message-error-msg">
+                            <#=get('ecardNoMessage')#>
+                        </span>
+                    </div>
+                    <div id="ecard-recaptcha"></div>
+                    <div class="ecard-btn-container">
+                        <button id="ecard-cancel-btn">
+                            <#=get('Cancel')#>
+                        </button>
+                        <button id="ecard-send-btn">
+                            <#=get('ecardSend')#>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="embedLinksDialog" class="user-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <button class="close-btn close-button" role="button" aria-disabled="false" title="close">
+                </button>
+            </div>
+            <div id="embed-links-header">
+                <div id="embed-links-main-headline">
+                    <#=get('linkEmbed')#>
+                </div>
+                <div id="embed-links-main-headline-live">
+                    <#=get('showLiveImage')#>
+                </div>
+            </div>
+            <div id="embed-links-main-cont">
+                <div class="linkdiv">
+                    <span id="embed-links-headline">Panorama Link</span>
+                    <button id="embed-links-copy" class="embed-copy">
+                        <span>
+                            <#=get('copy')#>
+                        </span>
+                        <div class="embed-links-copy-img"></div>
+                    </button>
+                </div>
+                <div class="linksCopy">
+                    <span class="linksCopyMsg">
+                        <#=get('linksCopied')#>
+                    </span>
+                </div>
+                <input id="embed-links-copy-input" type="text" readonly>
+
+
+                <div id="embedded-thumbnail-cont-left">
+                    <div class="thumbdiv">
+                        <div class="panoCopy">
+                            <span class="panoCopyMsg">
+                                <#=get('linksCopied')#>
+                            </span>
+                        </div>
+                    </div>
+                    <span id="embedded-headline">
+                        <#=get('thumbEmbedExplanation')#>
+                    </span>
+                    <button id="embed-panorama-copy" class="embed-copy">
+                        <span>
+                            <#=get('copy')#>
+                        </span>
+                        <div class="embed-links-copy-img"></div>
+                    </button>
+                    <textarea id="embed-panorama-copy-input" readonly></textarea>
+                </div>
+                <div id="embed-links-divider"></div>
+                <div id="embedded-thumbnail-cont-right">
+                    <div class="appdiv">
+                        <div class="appCopy">
+                            <span class="appCopyMsg">
+                                <#=get('linksCopied')#>
+                            </span>
+                        </div>
+                    </div>
+                    <span id="embedded-headline">
+                        <#=get('fullEmbedExplanation')#>
+                    </span>
+                    <button id="embed-app-copy" class="embed-copy">
+                        <span>
+                            <#=get('copy')#>
+                        </span>
+                        <div class="embed-links-copy-img"></div>
+                    </button>
+                    <textarea id="embed-app-copy-input" readonly></textarea>
+                    
+                    <span class="videodiv">
+                    <div class="appdiv">
+                        <div class="videoCopy">
+                            <span class="videoCopyMsg">
+                                <#=get('linksCopied')#>
+                            </span>
+                        </div>
+                    </div>
+                    <span id="embedded-headline">
+                        <#=get('videoEmbedTitle')#>
+                    </span>
+                    <button id="embed-video-copy" class="embed-copy">
+                        <span>
+                            <#=get('copy')#>
+                        </span>
+                        <div class="embed-links-copy-img"></div>
+                    </button>
+                    <textarea id="embed-video-copy-input" readonly></textarea>
+                    </span>
+
+                </div>
+                <div style="font-size:16px;" id="thumb-configurator">
+                    <#=get('thumbEmbedConfigurator')#>
+                </div>
+            </div>
+        </div>
+
+        <div id="timelapseDownloadDialog" class="user-dialog ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close close-button" role="button" aria-disabled="false" title="close">
+                    <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+                    <span class="ui-button-text">close</span>
+                </button>
+            </div>
+            <div class="video-customize-container">
+                <h1>
+                    <#=get('timelapseDownloadVideo')#>
+                </h1>
+                <div class="dialog-column-container">
+                    <div class="dialog-column dialog-column-3 video-quality">
+                        <div class="dialog-column-head">
+                            <#=get('timelapseVideoQuality')#>
+                        </div>
+                        <div class="dialog-column-body">
+                            <div class="dialog-settings-static">
+                                <span class="video-fps"></span>
+                                <#=get('timelapseVideoFps')#><br />
+                                    <span class="video-quality-readable"></span>
+                                    <#=get('timelapseQuality')#><br />
+                                        <span class="video-size-readable"></span>
+                                        <#=get('timelapsePixel')#><br />
+                                            <button type="button" class="change-video-settings-button">
+                                                <#=get('timelapseUseCustomParams')#>
+                                            </button>
+                            </div>
+                            <div class="dialog-settings">
+                                <label for="timelapseDownloadVideoFps">
+                                    <#=get('timelapseVideoFps')#>
+                                </label><input type="text" class="video-fps-input" value="" id="timelapseDownloadVideoFps" /><br />
+                                <label for="timelapseDownloadVideoQuality">
+                                    <#=get('timelapseQuality')#>
+                                </label><input type="text" class="video-quality-input" value="" id="timelapseDownloadVideoQuality" /> %<br />
+                                <label for="timelapseDownloadVideoSizeX">
+                                    <#=get('timelapseSize')#>
+                                </label><input type="text" class="video-size-x-input" value="" id="timelapseDownloadVideoSizeX" /> x <input type="text" class="video-size-y-input" value="" id="timelapseDownloadVideoSizeY" /> px
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dialog-column dialog-column-3 video-timespan-speed">
+                        <div class="dialog-column-head">
+                            <#=get('timelapseTimeframeAndSpeed')#>
+                        </div>
+                        <div class="dialog-column-body">
+                            <span class="video-start"></span> - <span class="video-end"></span><br />
+                            <button type="button" class="change-timespan-button">
+                                <#=get('timelapseUseCustomParams')#>
+                            </button><br />
+                            <br />
+                            <span class="video-image-count"></span>
+                            <#=get('timelapseImages')#><br />
+                                <button type="button" class="change-image-count-button">
+                                    <#=get('timelapseUseCustomParams')#>
+                                </button>
+                        </div>
+                    </div>
+                    <div class="dialog-column dialog-column-4 video-format">
+                        <div class="dialog-column-head">
+                            <#=get('timelapseVideoFormat')#>
+                        </div>
+                        <div class="dialog-column-body">
+                            <div class="radio-container">
+                                <input type="radio" class="custom-radio" name="video-format" value="mp4h264" id="timelapseDownloadVideoFormatMP4" checked="checked" />
+                                <label for="timelapseDownloadVideoFormatMP4">
+                                    <span class="label-icon"></span>
+                                    <span class="label-title">
+                                        <#=get('timelapseVideoMP4')#>
+                                    </span><br />
+                                    <span class="label-description">
+                                        <#=get('ttTimelapseMP4')#>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="radio-container">
+                                <input type="radio" class="custom-radio" name="video-format" value="wmv" id="timelapseDownloadVideoFormatWMV" />
+                                <label for="timelapseDownloadVideoFormatWMV">
+                                    <span class="label-icon"></span>
+                                    <span class="label-title">
+                                        <#=get('timelapseVideoWMV')#>
+                                    </span><br />
+                                    <span class="label-description">
+                                        <#=get('ttTimelapseWMV')#>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog-action-container">
+                    <button type="button" class="request-video">
+                        <#=get('timelapseDownloadVideo')#>
+                    </button>
+                </div>
+            </div>
+            <div class="video-preview-container">
+                <div class="video-container"></div>
+                <div class="video-preview-actions">
+                    <button type="button" class="close-button">
+                        <#=get('timelapseClose')#>
+                    </button>
+                    <button type="button" class="download-video">
+                        <#=get('timelapseDownload')#>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="windroseWindow" class="ui-widget" style="display: none;">
+            <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar">
+                <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+                        <span class="ui-button-text">close</span>
+                    </button>
+                </div>
+                <div class="windrose-container">
+                    <div class="windrose-wrapper">
+                        <div class="windrose-tooltip"></div>
+                        <div class="windrose-interval"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="weatherOverlay" class="rounded-box" style="display: none;">
+            <div class="loading"></div>
+            <ul class="items"></ul>
+            <a class="powered-by" href="#" target="_blank">
+                <span class="powered-by-text">
+                    <#=get('weatherDataAndForecasts')#>
+                </span>
+                <img class="powered-by-img" alt="" />
+            </a>
+        </div>
+
+        <div id="weatherOverlayItem" style="display: none;">
+            <ul>
+                <li class="item active" data-type="" data-color="" data-unit="">
+                    <div class="item-wrapper">
+                        <span class="title"></span>
+                        <span class="amplitude"><span class="value"></span><span class="unit"></span></span>
+                    </div>
+                    <div class="item-icon"></div>
+                    <div class="canvas-wrapper">
+                        <canvas class="canvas" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div id="weatherWindow" class="full-dialog loading"> -->
+        <div id="weatherWindow" class="feature-panel loading">
+            <div class="dialog-container">
+                <div class="full-loading-container">
+                    <span class="sun-icon"></span>
+                    <span class="rain-icon"></span>
+                    <span class="thunderstorm-icon"></span>
+                    <div class="progress-bar fluid"></div>
+                    <br />
+                    <#=get('loadingWeatherData')#>...
+                </div>
+                <div class="weather-menu-bar"><button class="weather">
+                        <#=get('weather')#>
+                    </button><button class="windrose">
+                        <#=get('windrose')#>
+                    </button></div>
+                <div class="intervals-container">
+                    <ul class="intervals">
+                        <li class="day active">
+                            <a href="#" data-range="day">
+                                <#=get('rangeDay')#>
+                            </a>
+                        </li>
+                        <!--
+                    <li class="week">
+                        <a href="#" data-range="week"><#=get('rangeWeek')#></a>
+                    </li>
+                    -->
+                        <li class="month">
+                            <a href="#" data-range="month">
+                                <#=get('rangeMonth')#>
+                            </a>
+                        </li>
+                        <!--
+                    <li class="halfYear">
+                        <a href="#" data-range="halfYear"><#=get('rangeHalfYear')#></a>
+                    </li>
+                    -->
+                        <li class="year">
+                            <a href="#" data-range="year">
+                                <#=get('rangeYear')#>
+                            </a>
+                        </li>
+                        <!--
+                    <li class="custom">
+                        <a href="#"><#=get('timelapseCustomPeriod')#></a>
+                    </li>
+                    -->
+                    </ul>
+                </div>
+                <div class="weather-container">
+                    <div class="date-display"></div>
+                    <div class="date-backward">
+                        <a href="#" class="arrow"></a>
+                    </div>
+                    <div class="loading-container">
+                        <div class="progress-bar fluid"></div>
+                        <br />
+                        <#=get('loadingWeatherData')#>...
+                    </div>
+                    <div class="no-data-container">
+                        <span class="sun-icon"></span>
+                        <span class="rain-icon"></span>
+                        <span class="thunderstorm-icon"></span>
+                        <br />
+                        <#=get('weatherNoDataAvailable')#>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <div class="highlighted">
+                            <span class="date"></span>
+                            <ul class="items"></ul>
+                        </div>
+                        <canvas class="canvas" />
+                    </div>
+                    <div class="date-forward">
+                        <a href="#" class="arrow"></a>
+                    </div>
+                    <ul class="weather-legend"></ul>
+                    <div class="weather-pano-image"></div>
+                </div>
+                <div class="windrose-forecast-container">
+                    <div class="windrose-tab-container">
+                        <ul class="windrose-selection">
+                            <li data-type="current">
+                                <#=get('archiveCurrentImage')#>
+                            </li>
+                            <li data-type="timescale"></li>
+                        </ul>
+                        <div class="windrose-container windrose-overlay" data-type="current">
+                            <div class="windrose-wrapper">
+                                <div class="windrose-tooltip"></div>
+                            </div>
+                        </div>
+                        <div class="windrose-container windrose-overlay" data-type="timescale">
+                            <div class="windrose-wrapper">
+                                <div class="windrose-tooltip"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forecast-container">
+                        <div class="loading-container">
+                            <div class="progress-bar fluid"></div>
+                            <br />
+                            <#=get('loadingWeatherData')#>...
+                        </div>
+                        <ul class="forecast-items"></ul>
+                        <div class="forecast-legend">
+                            <span class="sun-hours-legend">... <#=get('weatherHoursOfSun')#></span>
+                            <span class="rain-amount-legend">
+                                <#=get('unitRainMm')#> ... <#=get('weatherAmountOfRain')#>
+                            </span>
+                            <span class="rain-probability-legend">% ... <#=get('weatherProbabilityOfRain')#></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-back-container">
+                    <a class="copyright-logo" href="#" target="_blank"></a>
+                    <a class="back-to-panorama" href="#">
+                        <#=get('backToPanorama')#>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div id="weatherWindow" class="full-dialog loading"> -->
+        <div id="polarLightWindow" class="feature-panel loading">
+            <div class="dialog-container">
+                <!-- <div class="weather-menu-bar"><button class="weather">
+                        <#=get('weather')#>
+                    </button><button class="windrose">
+                        <#=get('windrose')#>
+                    </button>
+                </div> -->
+                <div class="intervals-container">
+                    <ul class="intervals">
+                        <li class="day active">
+                            <a href="#" data-range="day">
+                                <#=get('rangeDay')#>
+                            </a>
+                        </li>
+                        <li class="week">
+                            <a href="#" data-range="week">
+                                <#=get('rangeWeek')#>
+                            </a>
+                        </li>
+                        <li class="month">
+                            <a href="#" data-range="month">
+                                <#=get('rangeMonth')#>
+                            </a>
+                        </li>
+                        <li class="year">
+                            <a href="#" data-range="year">
+                                <#=get('rangeYear')#>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="weather-container">
+                    <div class="date-display"></div>
+                    <div class="date-backward">
+                        <a href="#" class="arrow"></a>
+                    </div>
+                    <div class="loading-container">
+                        <div class="progress-bar fluid"></div>
+                        <br />
+                        <#=get('loadingPolarLightData')#>...
+                    </div>
+                   <div class="no-data-container">
+                        <#=get('polarlightsNoDataAvailable')#>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <div class="highlighted">
+                            <span class="date"></span>
+                            <ul class="items"></ul>
+                        </div>
+                        <canvas class="canvas" />
+                    </div>
+                    <div class="date-forward">
+                        <a href="#" class="arrow"></a>
+                    </div>
+                    <ul class="weather-legend"></ul>
+                    <div class="weather-pano-image"></div>
+                </div>
+                <div class="copyright-back-container">
+                    <a class="copyright-logo" href="#" target="_blank"></a>
+                    <a class="back-to-panorama" href="#">
+                        <#=get('backToPanorama')#>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="weatherForecastItem" style="display: none;">
+            <ul>
+                <li>
+                    <div class="day">
+                        <div class="condition-icon"></div>
+                        <div class="date">
+                            <div class="date-desc"></div>
+                            <div class="date-full"></div>
+                        </div>
+                    </div>
+                    <div class="day-peaks">
+                        <div class="peaks">
+                            <span class="peak-low"></span> / <span class="peak-high"></span>
+                        </div>
+                        <div class="condition-text"></div>
+                    </div>
+                    <div class="additional">
+                        <div class="sun-hours"></div>
+                        <div class="rain-info">
+                            <div class="rain-mm"></div>
+                            <div class="rain-probability"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="compass">
+            <div class="compass-background"></div>
+            <div class="compass-sector"></div>
+            <div class="compass-needle"></div>
+        </div>
+
+        <div id="zoomSlider">
+            <div class="slider gui-slider">
+                <span class="zoom-icon-plus"></span>
+                <span class="zoom-icon-minus"></span>
+            </div>
+        </div>
+
+        <div id="imageBrightness">
+            <div><button class="brightness-plus"></button></div>
+            <div><button class="brightness-minus"></button></div>
+            <span class="brightness-value"></span>
+        </div>
+
+        <div id="dateChange"></div>
+
+        <div id="bestShots" class="feature-panel">
+            <div class="dialog-container">
+                <div class="text-container">
+                    <div class="title-bar">
+                        <div class="title">
+                            <#=get('bestShots')#>
+                        </div>
+                        <button class="close-info-text close-btn" title="close"></button>
+                    </div>
+                    <div class="pano-row-col"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="panoShotTemplate" class="template" style="display:none">
+            <div class="panoShot">
+                <img class="panoImg" alt="" />
+                <div class="overlay"></div>
+                <div class="date-time">
+                    <div class="date"></div>
+                    <div class="divide-point"></div>
+                    <div class="time"></div>
+                </div>
+                <div class="map"></div>
+            </div>
+        </div>
+
+        <div id="panoShot" class="template">
+            <ul>
+                <li class="pano-shot">
+                    <a href="#">
+                        <span class="date"></span>
+                        <span class="time"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="panoShotThumbnail" class="template">
+            <div class="thumbnail-container">
+                <div class="thumbnail">
+                    <div class="movement-container">
+                        <img alt="" />
+                    </div>
+                </div>
+                <div class="pano-shot-map"></div>
+            </div>
+        </div>
+
+        <div id="placesSearchBar">
+            <div class="search-box places-search-bar">
+                <div class="popover">
+                    <div class="list-container" data-list="places">
+                        <ul class="list">
+                            <li class="item empty-result"><span class="name">
+                                    <#=get('noPlacesFound')#>
+                                </span></li>
+                        </ul>
+                    </div>
+                    <div class="search-container">
+                        <div class="search-inner-container">
+                            <div class="search-typeahead"></div>
+                            <input type="text" placeholder="<#=get('placesSearchPlaceholder')#>" class="search-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="placesSearchList" class="full-dialog">
+            <ul class="places-list-container"></ul>
+        </div>
+
+        <div id="placesSearchListItem">
+            <li>
+                <a class="places-list-item">
+                    <div class="places-list-shot">
+                        <div class="places-list-shot-image">
+                            <div class="places-list-map"></div>
+                        </div>
+                    </div>
+                    <div class="places-list-title">
+                        <span class="places-list-name"></span><span class="places-list-distance"></span>
+                        <span class="places-list-breadcrumbs"></span>
+                        <span class="places-list-tour"></span>
+                    </div>
+                    <div class="places-list-datetime">
+                        <span class="places-list-date"></span><br />
+                        <span class="places-list-time"></span>
+                    </div>
+                </a>
+            </li>
+        </div>
+
+        <div id="schemaMap">
+            <span class="schema-map">
+                <span class="schema-map-container">
+                    <img class="schema-map-img" alt="" />
+                    <span class="schema-map-crosshair-lat"></span>
+                    <span class="schema-map-crosshair-lng"></span>
+                    <span class="schema-map-pointer"></span>
+                </span>
+            </span>
+        </div>
+
+        <div id="archive" class="pano-timeline">
+            <div class="time-display">
+                <ul class="range-selection">
+                    <li class="range day"><a href="#" data-range="day">
+                            <#=get('rangeDay')#>
+                        </a></li>
+                    <li class="range week"><a href="#" data-range="week">
+                            <#=get('rangeWeek')#>
+                        </a></li>
+                    <li class="range month"><a href="#" data-range="month">
+                            <#=get('rangeMonth')#>
+                        </a></li>
+                    <li class="range halfYear"><a href="#" data-range="halfYear">
+                            <#=get('rangeHalfYear')#>
+                        </a></li>
+                    <li class="range year"><a href="#" data-range="year">
+                            <#=get('rangeYear')#>
+                        </a></li>
+                </ul>
+                <div class="display current">
+                    <div class="event-blocker"></div>
+                    <div class="year"><span class="label">0000</span>
+                        <select class="mobile-select"></select>
+
+                        <div class="select select-wrapper">
+                            <div class="scroll-wrapper">
+                                <div class="scroll-handle-up"></div>
+                                <div class="scroll-handle-down"></div>
+                                <div class="wrapper">
+                                    <ul></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="day"><span class="label">1</span>
+                        <select class="mobile-select"></select>
+
+                        <div class="select select-wrapper">
+                            <div class="scroll-wrapper">
+                                <div class="scroll-handle-up"></div>
+                                <div class="scroll-handle-down"></div>
+                                <div class="wrapper">
+                                    <ul></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time"><span class="label">12:00</span></div>
+                </div>
+                <div class="display selection">
+                    <div class="year"><span class="label">0000</span></div>
+                    <div class="day"><span class="label">1</span></div>
+                    <div class="time"><span class="label">00:00</span></div>
+                </div>
+            </div>
+            <div class="control previous disabled">
+                <a href="#" class="arrow"></a>
+
+                <div class="extended-control">
+                    <ul>
+                        <li class="range year"><a href="#" data-range="year">
+                                <#=get('rangeYear')#>
+                            </a></li>
+                        <li class="range halfYear"><a href="#" data-range="halfYear">
+                                <#=get('rangeHalfYear')#>
+                            </a></li>
+                        <li class="range month"><a href="#" data-range="month">
+                                <#=get('rangeMonth')#>
+                            </a></li>
+                        <li class="range week"><a href="#" data-range="week">
+                                <#=get('rangeWeek')#>
+                            </a></li>
+                        <li class="range day active"><a href="#" data-range="day">
+                                <#=get('rangeDay')#>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="control next disabled">
+                <a href="#" class="arrow"></a>
+
+                <div class="extended-control">
+                    <ul>
+                        <li class="range year"><a href="#" data-range="year">
+                                <#=get('rangeYear')#>
+                            </a></li>
+                        <li class="range halfYear"><a href="#" data-range="halfYear">
+                                <#=get('rangeHalfYear')#>
+                            </a></li>
+                        <li class="range month"><a href="#" data-range="month">
+                                <#=get('rangeMonth')#>
+                            </a></li>
+                        <li class="range week"><a href="#" data-range="week">
+                                <#=get('rangeWeek')#>
+                            </a></li>
+                        <li class="range day active"><a href="#" data-range="day">
+                                <#=get('rangeDay')#>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="weather-container">
+                <ul class="items"></ul>
+                <div class="canvas-wrapper">
+                    <div class="highlighted">
+                        <span class="amplitude"><span class="value"></span><span class="unit"></span></span>
+                    </div>
+                    <canvas class="canvas" />
+                </div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-bar-container">
+                    <div class="timeline-bar-inner-container">
+                        <div class="indicator current" data-relative-position="1"></div>
+                        <div class="indicator selection" data-relative-position="1"></div>
+                        <div class="date-markers"></div>
+                        <ul class="timeline">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-container">
+                <div class="preview-inner-container">
+                    <div class="preview-image-container">
+                        <div class="preview">
+                            <img alt="<#=get('archivePreview')#>" />
+                        </div>
+                        <div class="preview-image-map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="archiveWeatherItem" style="display: none;">
+            <ul>
+                <li class="item active" data-type="" data-color="" data-unit="" data-title="">
+                    <span class="title"></span>
+                    <span class="amplitude hidden"><span class="value"></span><span class="unit"></span></span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="overviewMapContainer" style="display: none;">    
+            <div id="overviewMap"></div>
+            <div id="map-resizer">
+                <a id="map-resizer-handle"></a>
+            </div>
+            <a id="map-close">&times;</a>
+        </div>
+        <div class="closing-overviewmap close-btn"></div>  
+    
+        <div id="shareDialogWrapper">
+            <div id="shareDialog" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front no-titlebar">
+                <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                    <span class="ui-dialog-title">Panorama teilen</span>
+                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+                        <span class="ui-button-text">close</span>
+                    </button>
+                </div>
+                <div id="share" style="display: none;" class="ui-dialog-content ui-widget-content">
+                    <div class="left">
+                        <div class="background"></div>
+                        <div class="share-title">
+                            <#=get('shareWindowTitle')#>
+                        </div>
+
+                        <div class="selectContent">
+                            <div class="item active" data-content="live">
+                                <div class="title" id="shareSelectInstance">
+                                    <#=get('shareInstance')#>
+                                </div>
+                                <div class="explanation">
+                                    <#=get('ttShareInstance')#>
+                                </div>
+                            </div>
+                            <div class="item" data-content="time">
+                                <div class="title" id="shareSelectTime">
+                                    <#=get('shareTime')#>
+                                </div>
+                                <div class="explanation">
+                                    <#=get('ttShareTime')#>
+                                </div>
+                            </div>
+                            <div class="item" data-content="specific">
+                                <div class="title" id="shareSelectExact">
+                                    <#=get('shareExact')#>
+                                </div>
+                                <div class="explanation">
+                                    <#=get('ttShareExact')#>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="selectPeak">
+                            <div class="explanation">
+                                <#=get('ttSharePeak')#>:
+                            </div>
+                            <select name="peak">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="content clearfix">
+                        <div class="selectPlatform">
+                            <div class="item" data-platform="share" id="selectShare" title="<#=get('ttSocialNetwork')#>">
+                                <#=get('share')#>
+                            </div>
+                            <!--
+                        -->
+                            <div class="item active" data-platform="ecard" id="selectEcard" title="<#=get('ttEcard')#>">
+                                <#=get('ecard')#>
+                            </div>
+                            <!--
+                        -->
+                            <div class="item" data-platform="linkEmbed" id="selectLink" title="<#=get('ttLink')#>">
+                                <#=get('linkEmbed')#>
+                            </div>
+                        </div>
+
+                        <div class="share-content" id="selectShareContent">
+                            <div class="item twitter">
+                                <div class="button">
+                                    <#=get('shareOnTwitter')#>
+                                </div>
+                                <div class="explanation">
+                                    <#=get('ttTweet')#>
+                                </div>
+                            </div>
+                            <div class="item facebook">
+                                <div class="button">
+                                    <#=get('shareOnFacebook')#>
+                                </div>
+                                <div class="explanation">
+                                    <#=get('ttFacebookShare')#>
+                                </div>
+                            </div>
+                            <div class="item share-link clearfix">
+                                <div class="title">Panorama Link</div>
+                                <div class="explanation">
+                                    <#=get('linkExplanation')#>
+                                </div>
+                                <input class="copy" type="text" />
+                                <!--
+                            --><button class="copy" title="<#=get('copy')#>">
+                                    <#=get('copy')#>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="share-content" id="selectEcardContent">
+                            <form id="ecardForm">
+                                <div class="left">
+                                    <div class="title">
+                                        <#=get('ecardSender')#>
+                                    </div>
+                                    <input type="text" id="ecardYourName" placeholder="<#=get('ecardYourName')#>" />
+                                    <input type="text" id="ecardYourEmail" placeholder="<#=get('ecardYourEmail')#>" />
+                                </div>
+                                <div class="right">
+                                    <div class="title">
+                                        <#=get('ecardRecipient')#>
+                                    </div>
+                                    <input type="text" id="ecardRecipientName" placeholder="<#=get('ecardRecipientName')#>" />
+                                    <input type="text" id="ecardRecipientEmail" placeholder="<#=get('ecardRecipientEmail')#>" />
+                                </div>
+                                <div class="title">
+                                    <#=get('ecard')#>
+                                </div>
+                                <input type="text" id="ecardSubject" placeholder="<#=get('ecardSubject')#>" />
+                                <textarea id="ecardMessage" placeholder="<#=get('ecardMessage')#>"></textarea>
+
+                                <div id="g-recaptcha-share"></div>
+
+                                <button class="ecardSend" value="ecardSend" title="<#=get('ecardSend')#>">
+                                    <#=get('ecardSend')#>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="share-content" id="selectLinkContent">
+                            <div class="title">Panorama Link</div>
+                            <div class="explanation">
+                                <#=get('linkExplanation')#>
+                            </div>
+
+                            <input class="copy linkEmbed" type="text" />
+                            <button class="copy" title="<#=get('copy')#>">
+                                <#=get('copy')#>
+                            </button>
+
+                            <div class="title">
+                                <#=get('thumbEmbedExplanation')#>
+                            </div>
+                            <div class="explanation thumbConfigurator">
+                                <#=get('thumbEmbedConfigurator')#>
+                            </div>
+                            <textarea class="copy thumbEmbed"></textarea>
+                            <button class="copy" title="<#=get('copy')#>">
+                                <#=get('copy')#>
+                            </button>
+
+                            <div class="title">
+                                <#=get('fullEmbedExplanation')#>
+                            </div>
+                            <textarea class="copy fullEmbed"></textarea>
+                            <button class="copy" title="<#=get('copy')#>">
+                                <#=get('copy')#>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-widget-overlay ui-front"></div>
+        </div>
+
+        <div class="trail template" style="display: none;">
+            <div class="label">
+                <div class="label-content"></div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <div class="bubble-label">
+                        <div class="label-content"></div>
+                    </div>
+                    <div class="bubble-content theme-cont"></div>
+                    <div class="video"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spot template unpositioned" style="display: none;">
+            <span class="icon icon-shadow"></span>
+            <img class="icon icon-img" alt="icon" />
+
+            <div class="label">
+                <div class="label-content"></div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <div class="bubble-label">
+                        <div class="label-content"></div>
+                    </div>
+                    <div class="bubble-content theme-cont"></div>
+                    <div class="video"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spot-pole template unpositioned">
+            <div class="pole-line"></div>
+        </div>
+        <div class="spot-dynamic-status template">
+            <div class="spot-status spot-status-red"></div>
+            <div class="spot-status spot-status-orange"></div>
+            <div class="spot-status spot-status-green"></div>
+        </div>
+
+        <div class="vessel template" style="display: none;">
+            <img class="icon icon-img" alt="icon" />
+
+            <div class="label">
+                <div class="label-content"></div>
+            </div>
+            <div class="bubble-container">
+                <div class="bubble">
+                    <div class="bubble-label">
+                        <div class="label-content"></div>
+                    </div>
+                    <div class="bubble-content theme-cont">
+                        <img class="vessel-thumbnail" />
+                        <ul class="vessel-details">
+                            <li class="vessel-detail vessel-dimension" title="<#=get('vesselLength')#> x <#=get('vesselWidth')#>"><i class="far fa-ruler"></i> <span class="value"></span>
+                                <#=get('unitMeters')#>
+                            </li>
+                            <li class="vessel-detail vessel-draught" title="<#=get('vesselDraught')#>"><i class="far fa-water-lower"></i> <span class="value"></span>
+                                <#=get('unitMeters')#>
+                            </li>
+                            <li class="vessel-detail vessel-speed" title="<#=get('vesselSpeed')#>"><i class="far fa-tachometer-fast"></i> <span class="value"></span>
+                                <#=get('unitKnots')#>
+                            </li>
+                            <li class="vessel-detail vessel-course" title="<#=get('vesselCourse')#>"><i class="far fa-compass"></i> <span class="value"></span>
+                                <#=get('unitDegrees')#>
+                            </li>
+                            <li class="vessel-detail vessel-destination" title="<#=get('vesselDestination')#>"><i class="far fa-flag-checkered"></i> <span class="value"></span></li>
+                            <li class="vessel-detail vessel-eta" title="<#=get('vesselEta')#>"><i class="far fa-clock"></i> <span class="value"></span></li>
+                            <li class="vessel-detail vessel-link"><a href="#" class="vessel-details-link" target="_blank">
+                                    <#=get('vesselsMoreInfo')#>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vessel-pole template unpositioned">
+            <div class="pole-line"></div>
+        </div>
+
+        <div class="login template">
+            <img class="login-logo" />
+            <h1>
+                <#=get('aclProtectedArea')#>
+            </h1>
+            <div class="login-container">
+                <div class="login-banner-container hide">
+                    <img class="login-banner" />
+                </div>
+                <div class="login-form-container">
+                    <span class="login-close-button ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+                    <p class="login-text"></p>
+                    <p class="login-error"></p>
+                    <div class="login-form">
+                        <div class="login-input">
+                            <label for="loginUsername">
+                                <#=get('aclUsername')#>
+                            </label> <input type="text" class="username" id="loginUsername" />
+                        </div>
+                        <div class="login-input">
+                            <label for="loginPassword">
+                                <#=get('aclPassword')#>
+                            </label> <input type="password" class="password" id="loginPassword" />
+                        </div>
+                    </div>
+                    <div class="login-actions">
+                        <div class="login-action-column hidden">
+                            <label class="login-switch">
+                                <input type="checkbox"><span></span>
+                                <#=get('aclRememberMe')#>
+                            </label>
+                        </div>
+                        <div class="login-action-column">
+                            <button type="button" class="login-button">
+                                <#=get('login')#>
+                            </button>
+                        </div>
+                        <div class="login-action-column hidden">
+                            <a class="login-lost-password" href="#">
+                                <#=get('aclForgotPassword')#>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="shareWindow" class="feature-panel" class="loading">
+            <div class="dialog-container">
+                <div id="shareDialogContainer">
+                    <div class="title-bar">
+                        <h1 class="share-headline">
+                            <#=get('shareWindowTitle')#>
+                        </h1>
+                        <button class="close-info-text close-btn" title="close"></button>
+                    </div>
+                    <div id="shareImageContainer">
+                        <div id="shareLiveSelector">
+                            <div class="centered">
+                                <label class="container">
+                                    <#=get('shareLiveImage')#>
+                                        <input name="select-live-img" type="checkbox">
+                                        <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="shareImagePosition">
+                            <div id="shareCenterPano">
+                                <img class="bgImg" src="" />
+                                <div class="peakMarker">
+                                    <div class="innerCircle"></div>
+                                </div>
+                                <div id="shareInitialView">
+                                    <div id="shareInitialDrag">
+                                        <div id="shareInitialDragCont">
+                                            <div id="shareInitialViewCursor"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="shareImageTimeContainer">
+                            <div id="shareImageTime">
+                                <span class="time">
+                                    <!-- preserve this for the formated time of the image -->
+                                </span>
+                                <span class="live">
+                                    <#=get('showLiveImage')#>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="share-copy-link">
+                        <h3 id="copy-link-header-copy">
+                            <#=get('linksCopied')#>
+                        </h3>
+                        <h3 id="copy-link-header">
+                            <#=get('copy')#>
+                        </h3>
+                    </div>
+                    <div id="copy-link-text">
+                        <div class="hidden-field">
+                            <input type="text" id="link-copy" readOnly>
+                        </div>
+                        <div class="text-field">
+                            <div class="link-text">
+                                <span class="text-link"></span>
+                            </div>
+                            <div class="copy-link-icon"></div>
+                        </div>
+                    </div>
+                    <div class="setPos">
+                        <div class="peakNameLabel">
+                            <div class="peakName"></div>
+                            <div class="closeButton" title="Berggipfel löschen"></div>
+                        </div>
+                    </div>
+                    <div class="share-btn-container">
+                        <button id="share-btn-ecard">
+                            <div class="share-btn-icon"></div>
+                            <p>Send E-Card</p>
+                        </button>
+                        <button id="share-btn-facebook">
+                            <div class="share-btn-icon"></div>
+                            <p>
+                                <#=get('shareOnFacebook')#>
+                            </p>
+                        </button>
+                        <button id="share-btn-twitter">
+                            <div class="share-btn-icon"></div>
+                            <p>
+                                <#=get('shareOnTwitter')#>
+                            </p>
+                        </button>
+                        <button id="share-btn-embed-links">
+                            <div class="share-btn-icon"></div>
+                            <p>
+                                <#=get('linkEmbed')#>
+                            </p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="big-panel" class="feature-panel">
+            <div class="customer-content">
+                <div class="dialog-container">
+                    <div class="text-container">
+                        <div class="title-bar">
+                            <div class="title"></div>
+                            <button class="close-info-text close-btn" title="close"></button>
+                        </div>
+                        <div class="info-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="video-panel" class="feature-panel">
+            <div class="dialog-container">
+                <div class="text-container">
+                    <div class="title-bar">
+                        <div class="title">
+                            <#=get('panoramaVideo')#>
+                        </div>
+                        <button class="close-info-text close-btn" title="close"></button>
+                    </div>
+                    <video class="video-source" controls autoplay loop playsinline></video>
+                </div>
+            </div>
+        </div>
+        <div class="big-bubble template">
+            <div class="dialog-container">
+                <div class="text-container">
+                    <div class="title-bar">
+                        <div class="title"></div>
+                    </div>
+                    <div class="link-container">
+                        <button class="bubble_link">
+                        </button>
+                    </div>
+                    <div class="info-text"></div>
+                    <div class="video"></div>
+                </div>
+                <button class="close-info-text close-btn" title="close"></button>
+            </div>
+        </div>
+        <div id="big-bubble-container"></div>
+        <div id="imageReportDialog" class="feature-panel">
+            <div class="dialog-container">
+                <div class="text-container">
+                    <div class="title-bar">
+                        <div class="title">
+                            <#=get('reportImage')#>
+                        </div>
+                        <button class="close-info-text close-btn" title="close"></button>
+                    </div>
+                    <div class="info-text"></div>
+                    <div class="image-report-container">
+                        <p>
+                            <#=get('reportImageDescription')#>
+                        </p>
+                        <p>
+                            <#=get('reportImageIssueChoice')#><br />
+                                <select name="report-issue-choice"></select>
+                        </p>
+                        <p>
+                            <#=get('reportImageEmail')#><br />
+                                <input type="email" name="report-email" />
+                                <span class="reportemail-error-msg">
+                                    <#=get('reportImageNoEmail')#>
+                                </span>
+                        </p>
+                        <p>
+                            <#=get('reportImageText')#><br />
+                                <textarea name="report-comment" rows="4"></textarea><br />
+                                <span class="reportmessage-error-msg">
+                                    <#=get('reportImageNoMessage')#>
+                                </span>
+                                <label>
+                                    <input type="checkbox" name="send-precise-position" value="1" />
+                                    <#=get('reportImagePrecisePosition')#>
+                                </label>
+                        </p>
+                        <br />
+                        <div id="g-recaptcha-image-report"></div>
+                        <div class="dialog-action-container">
+                            <button type="button" class="report-image-btn">
+                                <#=get('reportImageSend')#>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </script>
+
+    <script id="perspective_svg" type="text/html">
+    <svg height="200" version="1.1" width="200" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: 0; top: 0;">
+        <defs>
+            <radialGradient id="radial" cx="50%" cy="50%" r="50%">
+                <stop stop-color="#00ff00" offset="0%" stop-opacity="0.5"></stop>
+                <stop stop-color="#00ff00" offset="60%" stop-opacity="0.4"></stop>
+                <stop stop-color="#00ff00" offset="100%" stop-opacity="0"></stop>
+                <!--<stop stop-color = "#00ff00" offset = "0%" stop-opacity="1"></stop>
+                <stop stop-color = "#00ff00" offset = "100%" stop-opacity="1"></stop>-->
+            </radialGradient>
+            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop stop-color="#000000" offset="0%" stop-opacity="0.6"></stop>
+                <stop stop-color="#000000" offset="70%" stop-opacity="0.3"></stop>
+                <stop stop-color="#000000" offset="100%" stop-opacity="0"></stop><!---->
+                <!--<stop stop-color = "#00ff00" offset = "0%" stop-opacity="1"></stop>
+                <stop stop-color = "#00ff00" offset = "100%" stop-opacity="1"></stop><!---->
+            </linearGradient>
+        </defs>
+        <g>
+            <clipPath id="cut-off-bottom">
+                <path stroke="#00ff00" stroke-width="2" d="M100,100L1.5192246987791975,117.36481776669302A100,100,0,0,0,197.81476007338057,120.79116908177593z"></path>
+            </clipPath>
+        </g>
+        <circle fill="url(#radial)" cx="100" cy="100" r="100" clip-path="url(#cut-off-bottom)"></circle>
+        <rect id="startAngleLimiter" x="100" y="99" width="100" height="2" style="fill:url(#linear)" transform="rotate(0, 100, 101)"></rect>
+        <rect id="endAngleLimiter" x="100" y="99" width="100" height="2" style="fill:url(#linear)" transform="rotate(0, 100, 101)"></rect>
+        <g id="arrow" transform="rotate(0, 100, 101)">
+            <rect x="100" y="99" width="45" height="2"></rect>
+            <rect x="145" y="99" width="10" height="2" transform="rotate(-155, 145, 100)"></rect>
+            <rect x="145" y="99" width="9" height="2" transform="rotate(-170, 145, 100)"></rect>
+            <rect x="145" y="99" width="10" height="2" transform="rotate(155, 145, 100)"></rect>
+            <rect x="145" y="99" width="9" height="2" transform="rotate(170, 145, 100)"></rect>
+        </g>
+    </svg>
+</script>
+    <script id="cam-perspective-svg" type="text/html">
+    <svg height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="radial-cam" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop stop-color="#a3cd00" offset="0%" stop-opacity="0.8"></stop>
+                <stop stop-color="#a3cd00" offset="60%" stop-opacity="0.5"></stop>
+            </radialGradient>
+        </defs>
+        <g>
+            <clipPath id="cut-off-cam">
+                <path stroke-width="1" stroke="#a3cd00"
+                      d="M50,50L3.640807271660627,31.2696703292044A50,50,0,0,0,92.4024048078213,76.49596321166024z"></path>
+            </clipPath>
+        </g>
+        <circle fill="url(#radial-cam)" clip-path="url(#cut-off-cam)" cx="50" cy="50" r="50"></circle>
+    </svg>
+</script>
+    <script id="compass_sector_svg" type="text/html">
+	<svg height="56" version="1.1" width="56" xmlns="http://www.w3.org/2000/svg">
+		<g>
+			<clipPath id="cut-off-circle">
+				<path stroke="#00ff00" stroke-width="2"
+					  d="M28,28L50.38401445898612,12.901791606289834A27,27,0,0,0,7.017059040661785,11.008349441654392z"></path>
+			</clipPath>
+		</g>
+		<circle stroke="#ffffff" stroke-width="4" stroke-opacity="0.7" fill-opacity="0" cx="28" cy="28" r="26"
+				clip-path="url(#cut-off-circle)"></circle>
+	</svg>
+</script>
+    <script>
+        var google = {
+            maps: {
+                OverlayView: {}
+            }
+        }; //fix for loading google maps on demand
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+    <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+    <script src="https://static.panomax.com/front/thumbnail/js/pmaxthumbnail.js"></script>
+    <script src="https://client-static.panomax.com/js/modernizr-custom.min.js"></script>
+    <script src="https://client-static.panomax.com/js/d3-4.9.1.min.js"></script>
+    <script src="https://client-static.panomax.com/js/pmaxhtmlapp.js?t=1677751530"></script>
+
+    <script>
+        $(function () {
+            var params = { "frontentry": "https:\/\/glastocam.panomax.com", "iid": 1238, "cu": "en-GB", "app": false, "theme": "phunkyDark", "tour": null, "print": false, "server": { "offline": false, "protocol": "https", "domain": "panomax.com", "disableCacheValue": "tcache_8a9cg3", "map": { "urlpattern": "\/\/{s}.tile.openstreetmap.org\/{z}\/{x}\/{y}.png", "maxzoom": 15, "copyright": "Testinstallation auf des Schiff Servers" }, "urls": { "clientStaticUrl": "https:\/\/client-static.panomax.com", "staticUrl": "https:\/\/static.panomax.com", "deliveryUrl": "https:\/\/delivery.panomax.com", "panodataUrl": "https:\/\/panodata[x].panomax.com", "liveImageUrl": "https:\/\/live-image.panomax.com", "apiUrl": "https:\/\/api.panomax.com", "failoverUrl": "https:\/\/panodata-alternate.panomax.com" } }, "feurl": "https:\/\/client-static.panomax.com\/" };
+
+            // add frontend parameters
+            for (var param in feparams) {
+                params[param] = feparams[param];
+            }
+
+            // start
+            //var appmain = new AppMain(params);
+            var pmaxClient = new Pmax(params);
+            pmaxClient.load();
+        });
+    </script>
+
+    <script type="text/html" id="pmaxCultureStrings">
+        <data><about><![CDATA[About]]></about><aboutAvisecContent><![CDATA[avisec ag provides top-notch webcam solutions. Read more about our services from https://www.avisec.ch. Contact us via email! info@avisec.ch
+<p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutAvisecContent><aboutAvisecTitle><![CDATA[Credits $(version)]]></aboutAvisecTitle><aboutFlycamContent><![CDATA[Flycam Ltd. provides top-notch webcam solutions. Read more about our services from https://www.flycam.fi. Contact our sales: info@flycam.fi / +358 40 777 3773
+<p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutFlycamContent><aboutFlycamTitle><![CDATA[Credits $(version)]]></aboutFlycamTitle><aboutLiveactContent><![CDATA[<p>PANOMAX interactive 360° panorama experience
+Visit our website at www.panomax.com to learn more about our services.
+© Panomax GmbH</p><p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutLiveactContent><aboutLiveactTitle><![CDATA[Credits $(version)]]></aboutLiveactTitle><aboutPanomaxContent><![CDATA[<p>PANOMAX interactive 360° panorama experience
+Visit our website at www.panomax.com to learn more about our services.
+© Panomax GmbH</p><p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutPanomaxContent><aboutPanomaxTitle><![CDATA[Credits $(version)]]></aboutPanomaxTitle><aboutSkilinechContent><![CDATA[SKILINE PANORAMA interactive 360° panorama experience.Visit our website www.skiline.ccto get more information about your personal skiing experience. Sign up for a free Skiline account and track your skiing days and personal panorama pictures by entering your ski pass IDs.You can get more information about our services and technology solutions at support@skiline.cc.
+<p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutSkilinechContent><aboutSkilinechTitle><![CDATA[Credits $(version)]]></aboutSkilinechTitle><aboutSkilineContent><![CDATA[SKILINE PANORAMA interactive 360° panorama experience.Visit our website www.skiline.ccto get more information about your personal skiing experience. Sign up for a free Skiline account and track your skiing days and personal panorama pictures by entering your ski pass IDs.You can get more information about our services and technology solutions at support@skiline.cc.
+<p><a href="https://www.panomax.com/datenschutz_en.html" target="_blank">Privacy policy</a></p>]]></aboutSkilineContent><aboutSkilineTitle><![CDATA[Credits $(version)]]></aboutSkilineTitle><aclAccessDenied><![CDATA[Access not allowed]]></aclAccessDenied><aclCanDownloadDenied><![CDATA[You are not authorized to download content.]]></aclCanDownloadDenied><aclCanDownloadRequired><![CDATA[To download content you must log in.]]></aclCanDownloadRequired><aclCanDownloadTimelapseDenied><![CDATA[You are not authorized to download content.]]></aclCanDownloadTimelapseDenied><aclCanDownloadTimelapseRequired><![CDATA[To download content you must log in.]]></aclCanDownloadTimelapseRequired><aclCanViewRequired><![CDATA[To use this application you must log in.]]></aclCanViewRequired><aclLoginFailed><![CDATA[Login Failed]]></aclLoginFailed><aclPassword><![CDATA[Password]]></aclPassword><aclProtectedArea><![CDATA[Protected area]]></aclProtectedArea><aclUsername><![CDATA[User name]]></aclUsername><aclWindowTitle><![CDATA[Login]]></aclWindowTitle><aclWrongLogin><![CDATA[Username or password incorrect.]]></aclWrongLogin><altitude><![CDATA[altitude]]></altitude><altitudeUnit><![CDATA[m]]></altitudeUnit><archive><![CDATA[Archive]]></archive><archiveCurrentImage><![CDATA[Current image]]></archiveCurrentImage><archiveGoTo><![CDATA[Go to]]></archiveGoTo><archivePreview><![CDATA[Preview]]></archivePreview><archiveSelectTime><![CDATA[Select time]]></archiveSelectTime><archiveSwitchMessage><![CDATA[Please wait...]]></archiveSwitchMessage><archiveThumbsLoading><![CDATA[Loading timeline...]]></archiveThumbsLoading><archiveToday><![CDATA[Today]]></archiveToday><autoPan><![CDATA[Rotation]]></autoPan><autoPanPaused><![CDATA[Rotation paused]]></autoPanPaused><back><![CDATA[Back]]></back><backtopanorama><![CDATA[Back to Panorama]]></backtopanorama><bestShotNext><![CDATA[Next]]></bestShotNext><bestShotPrevious><![CDATA[Previous]]></bestShotPrevious><bestShots><![CDATA[Best Shots]]></bestShots><browseArchive><![CDATA[Browse archive]]></browseArchive><calendar><![CDATA[Calendar]]></calendar><cancel><![CDATA[Cancel]]></cancel><cannotAutopan><![CDATA[Can’t rotate]]></cannotAutopan><cannotAutopanDetails><![CDATA[Please zoom in a little if possible to rotate the panorama!]]></cannotAutopanDetails><caution><![CDATA[Caution]]></caution><close><![CDATA[Close]]></close><comingSoonText><![CDATA[This feature is still under development. Thank you for your patience.]]></comingSoonText><comingSoonTitle><![CDATA[Coming Soon]]></comingSoonTitle><comparePano><![CDATA[Compare]]></comparePano><compassPoints><![CDATA[NESW]]></compassPoints><contact><![CDATA[Contact]]></contact><continue><![CDATA[Continue]]></continue><copy><![CDATA[Copy]]></copy><day><![CDATA[Day]]></day><daysOfWeekLong><![CDATA[Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday]]></daysOfWeekLong><daysOfWeekShort><![CDATA[SU,MO,TU,WE,TH,FR,SA]]></daysOfWeekShort><distanceUnit><![CDATA[km]]></distanceUnit><downloadCurrentImage><![CDATA[Download]]></downloadCurrentImage><earliest><![CDATA[earliest]]></earliest><eastLetter><![CDATA[E]]></eastLetter><ecard><![CDATA[E-Card]]></ecard><ecardDefaultSubject><![CDATA[Panorama from: $(instanceName)]]></ecardDefaultSubject><ecardDescription><![CDATA[Please enter your data to send the current panorama to a friend:]]></ecardDescription><ecardFailure><![CDATA[Failure]]></ecardFailure><ecardFailureDetails><![CDATA[An error has occured while trying to deliver your e-card. Please try again later.]]></ecardFailureDetails><ecardMessage><![CDATA[Message]]></ecardMessage><ecardNo><![CDATA[]]></ecardNo><ecardNoMessage><![CDATA[Please supply a message.]]></ecardNoMessage><ecardNoRecepientEmail><![CDATA[Please supply a recipient email.]]></ecardNoRecepientEmail><ecardNoRecepientName><![CDATA[Please supply a recipient name.]]></ecardNoRecepientName><ecardNoSenderEmail><![CDATA[Please supply a sender email.]]></ecardNoSenderEmail><ecardNoSenderName><![CDATA[Please supply a sender name.]]></ecardNoSenderName><ecardNoSubject><![CDATA[Please supply a subject.]]></ecardNoSubject><ecardRecipient><![CDATA[Recipient]]></ecardRecipient><ecardRecipientEmail><![CDATA[Recipient email]]></ecardRecipientEmail><ecardRecipientName><![CDATA[Recipient name]]></ecardRecipientName><ecardSend><![CDATA[Send]]></ecardSend><ecardSender><![CDATA[Sender]]></ecardSender><ecardSending><![CDATA[Sending E-Card]]></ecardSending><ecardSendingDetails><![CDATA[Sending E-Card...]]></ecardSendingDetails><ecardSubject><![CDATA[Subject]]></ecardSubject><ecardSuccess><![CDATA[Success]]></ecardSuccess><ecardSuccessDetails><![CDATA[Your e-card has been successfully delivered.]]></ecardSuccessDetails><ecardValidationError><![CDATA[Input error]]></ecardValidationError><ecardYourEmail><![CDATA[Your email]]></ecardYourEmail><ecardYourName><![CDATA[Your Name]]></ecardYourName><embed><![CDATA[Embed]]></embed><error><![CDATA[Error]]></error><facebookShare><![CDATA[Facebook]]></facebookShare><filter><![CDATA[Search ...]]></filter><flashHint><![CDATA[You are seeing this limited preview because there is no Flash plugin installed or it is not yet up-to-date. Please install the newest Flash Player here to enjoy all features!]]></flashHint><flashMissing><![CDATA[Could not start Flash Player]]></flashMissing><flashMissingCont><![CDATA[Please try one of these options:	Install the latest Flash Player (click on the button below)	Just try to call this page once again	Be sure to have JavaScript and Flash enabled in your browser]]></flashMissingCont><formatLongDateC><![CDATA[%F %d, %Y]]></formatLongDateC><formatLongDateHtmlC><![CDATA[%B %d, %Y]]></formatLongDateHtmlC><formatMonths><![CDATA[January,February,March,April,May,June,July,August,September,October,November,December]]></formatMonths><formatMonthsShort><![CDATA[Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec]]></formatMonthsShort><formatShortDate><![CDATA[yyyy-mm-dd]]></formatShortDate><formatShortDateC><![CDATA[%Y-%m-%d]]></formatShortDateC><formatShortDateHtmlC><![CDATA[%Y-%m-%d]]></formatShortDateHtmlC><formatShortMonthYearC><![CDATA[%Y %b]]></formatShortMonthYearC><formatShortTimeC><![CDATA[%H:%M]]></formatShortTimeC><formatShortTimeHtmlC><![CDATA[%H:%M]]></formatShortTimeHtmlC><formatTimeC><![CDATA[%H:%M:%S]]></formatTimeC><formatTimeHtmlC><![CDATA[%H:%M:%S]]></formatTimeHtmlC><fullEmbedExplanation><![CDATA[Embed application on HTML page:]]></fullEmbedExplanation><galleryThumbsLoading><![CDATA[Loading thumbnails]]></galleryThumbsLoading><gatheringInformation><![CDATA[Gathering information]]></gatheringInformation><getPanoLink><![CDATA[Panorama Link]]></getPanoLink><hide><![CDATA[Hide]]></hide><hideHotspots><![CDATA[Hide Hot Spots]]></hideHotspots><hotSpots><![CDATA[Hot Spots]]></hotSpots><imageReport><![CDATA[Report this image]]></imageReport><imagereportIssueBadImageQuality><![CDATA[Image quality is bad]]></imagereportIssueBadImageQuality><imagereportIssueImageOutdated><![CDATA[Image outdated]]></imagereportIssueImageOutdated><imagereportIssuePrivacyBuildings><![CDATA[Buildings]]></imagereportIssuePrivacyBuildings><imagereportIssuePrivacyLicensePlate><![CDATA[License Plate Number]]></imagereportIssuePrivacyLicensePlate><imagereportIssuePrivacyOther><![CDATA[Other]]></imagereportIssuePrivacyOther><imagereportIssuePrivacyPeople><![CDATA[Faces/People]]></imagereportIssuePrivacyPeople><imprint><![CDATA[Imprint]]></imprint><instNotFound><![CDATA[Location not found]]></instNotFound><instNotFoundCont><![CDATA[The entered address doesn’t match any of our locations.]]></instNotFoundCont><interfaceCommError><![CDATA[Could not communicate with the server properly, please try again later.]]></interfaceCommError><interfaceCommunicationFailure><![CDATA[Could not communicate with the server, please try again later.]]></interfaceCommunicationFailure><interfaceDownloadImageMessage><![CDATA[Image is being generated...]]></interfaceDownloadImageMessage><interfaceDownloadImageTitle><![CDATA[Panorama download]]></interfaceDownloadImageTitle><interfaceEcardError><![CDATA[Could not send email, please try again later.]]></interfaceEcardError><interfaceResponseFailure><![CDATA[Could not handle your request, please try again later.]]></interfaceResponseFailure><interfaceTimeLapseSequenceResponseError><![CDATA[Could not interpret response from GetTimeLapseSequence interface method]]></interfaceTimeLapseSequenceResponseError><launchOverviewMap><![CDATA[Show overview map]]></launchOverviewMap><link><![CDATA[Link]]></link><linkEmbed><![CDATA[Link/Embed]]></linkEmbed><linkExplanation><![CDATA[This link allows you to open the currently selected panorama. Copy and paste it into any Email or online conversation!]]></linkExplanation><linksCopied><![CDATA[Copied]]></linksCopied><listAddFavorite><![CDATA[add to favourites]]></listAddFavorite><listAll><![CDATA[All]]></listAll><listDistance><![CDATA[distance from your location]]></listDistance><listFilterCamTypeCity><![CDATA[city]]></listFilterCamTypeCity><listFilterCamTypeLake><![CDATA[lake]]></listFilterCamTypeLake><listFilterCamTypeMountain><![CDATA[mountain]]></listFilterCamTypeMountain><listFilterCamTypeRiver><![CDATA[river]]></listFilterCamTypeRiver><listFilterCamTypeSea><![CDATA[sea]]></listFilterCamTypeSea><listFilterCamTypeWater><![CDATA[water]]></listFilterCamTypeWater><listFilterCountryAT><![CDATA[cams in Austria]]></listFilterCountryAT><listFilterCountryAU><![CDATA[cams in Australia]]></listFilterCountryAU><listFilterCountryCA><![CDATA[cams in Canada]]></listFilterCountryCA><listFilterCountryCH><![CDATA[cams in Switzerland]]></listFilterCountryCH><listFilterCountryDE><![CDATA[cams in Germany]]></listFilterCountryDE><listFilterCountryFF><![CDATA[cams in France]]></listFilterCountryFF><listFilterCountryFI><![CDATA[cams in Finland]]></listFilterCountryFI><listFilterCountryFR><![CDATA[cams in France]]></listFilterCountryFR><listFilterCountryGB><![CDATA[cams in Great Britain]]></listFilterCountryGB><listFilterCountryGR><![CDATA[cams in Greece]]></listFilterCountryGR><listFilterCountryIL><![CDATA[cams in Israel]]></listFilterCountryIL><listFilterCountryIT><![CDATA[cams in Italy]]></listFilterCountryIT><listFilterCountryUS><![CDATA[cams in USA]]></listFilterCountryUS><listFilterFavorites><![CDATA[favourites]]></listFilterFavorites><listRemoveFavorite><![CDATA[remove favourite]]></listRemoveFavorite><listSearchPlaceholder><![CDATA[search ...]]></listSearchPlaceholder><loadErrCancelled><![CDATA[Could not load application, please try again later!]]></loadErrCancelled><loadErrPaused><![CDATA[Problems loading application, please stand by or try again later...]]></loadErrPaused><loaderTilesNoDayInfo><![CDATA[Necessary information for display could not be loaded]]></loaderTilesNoDayInfo><loaderTilesNoSizeInfo><![CDATA[Necessary information for display could not be loaded]]></loaderTilesNoSizeInfo><loadingPolarLightData><![CDATA[Loading polar lights data]]></loadingPolarLightData><loadingWeatherData><![CDATA[Loading weather data]]></loadingWeatherData><login><![CDATA[Login]]></login><mobileAboutAvisecContent><![CDATA[The 360° HD Livecam is a state of the art webcam...]]></mobileAboutAvisecContent><mobileAboutAvisecLink><![CDATA[https://www.avisec.ch]]></mobileAboutAvisecLink><mobileAboutAvisecLinkLabel><![CDATA[avisec.ch]]></mobileAboutAvisecLinkLabel><mobileAboutAvisecTitle><![CDATA[avisec ag]]></mobileAboutAvisecTitle><mobileAboutFlycamContent><![CDATA[The 360° HD Livecam is a state of the art webcam...		Experience 360° panorama images live with high quality! By means of our highly precise photographytechnology we enable our users to enjoy fascinating colours from everywhere on computers, smartphones and tablets.		Up to 100 images are shot every day, don’t forget to use the &#34;Movie&#34;-Button! We also recommend to view thepanoramas on your computer for more exciting features at flycam.fi!		Our Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. The image of up to 66 million pixels creates the illusion of really being there. Discover it on your computer or mobile device.Want more? Visit us on our webpage:]]></mobileAboutFlycamContent><mobileAboutFlycamLink><![CDATA[https://www.flycam.fi]]></mobileAboutFlycamLink><mobileAboutFlycamLinkLabel><![CDATA[flycam.fi]]></mobileAboutFlycamLinkLabel><mobileAboutFlycamTitle><![CDATA[FLYCAM Ltd.]]></mobileAboutFlycamTitle><mobileAboutLiveactContent><![CDATA[Interactive and live panoramic visionExperience 360° panorama images live in unprecedented quality! By means of our highly precise photographytechnology we give our users the chance to enjoy fascinating colours from everywhere on computers, smart phones and tablets.Up to 100 images are shot every day, so don’t hesitate to try the &#34;Movie&#34;-Button! We also recommend you to have a look at ourpanoramas on your computer for more exciting features on panomax.com!Our PANOMAX 360° Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. That is why it is already used in cities and on the countryside, as well as on mountains, near rivers and the sea.The image of up to 66 million pixels creates the illusion of really being there.On large computer screens users can discover the environment without any limits by means of interactive hot spots which provide information and entertainment via image, video and text.Want more? Visit us on our webpage:]]></mobileAboutLiveactContent><mobileAboutLiveactLink><![CDATA[https://www.panomax.com]]></mobileAboutLiveactLink><mobileAboutLiveactLinkLabel><![CDATA[panomax.com]]></mobileAboutLiveactLinkLabel><mobileAboutLiveactTitle><![CDATA[Panomax]]></mobileAboutLiveactTitle><mobileAboutPanomaxContent><![CDATA[Interactive and live panoramic visionExperience 360° panorama images live in unprecedented quality! By means of our highly precise photographytechnology we give our users the chance to enjoy fascinating colours from everywhere on computers, smart phones and tablets.Up to 100 images are shot every day, so don’t hesitate to try the &#34;Movie&#34;-Button! We also recommend you to have a look at ourpanoramas on your computer for more exciting features on panomax.com!Our PANOMAX 360° Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. That is why it is already used in cities and on the countryside, as well as on mountains, near rivers and the sea.The image of up to 66 million pixels creates the illusion of really being there.On large computer screens users can discover the environment without any limits by means of interactive hot spots which provide information and entertainment via image, video and text.Want more? Visit us on our webpage:]]></mobileAboutPanomaxContent><mobileAboutPanomaxLink><![CDATA[http://www.panomax.com]]></mobileAboutPanomaxLink><mobileAboutPanomaxLinkLabel><![CDATA[panomax.com]]></mobileAboutPanomaxLinkLabel><mobileAboutPanomaxTitle><![CDATA[Panomax]]></mobileAboutPanomaxTitle><mobileAboutSkilinechContent><![CDATA[Interactive and live panoramic visionExperience 360° panorama images live in unprecedented quality! By means of our highly precise photographytechnology we give our users the chance to enjoy fascinating colours from everywhere on computers, smart phones and tablets.Up to 100 images are shot every day, so don’t hesitate to try the &#34;Movie&#34;-Button! We also recommend you to have a look at ourpanoramas on your computer for more exciting features on skiline.cc!Our PANOMAX 360° Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. That is why it is already used in cities and on the countryside, as well as on mountains, near rivers and the sea.The image of up to 66 million pixels creates the illusion of really being there.On large computer screens users can discover the environment without any limits by means of interactive hot spots which provide information and entertainment via image, video and text.Want more? Visit us on our webpage:]]></mobileAboutSkilinechContent><mobileAboutSkilinechLink><![CDATA[http://www.skiline.cc]]></mobileAboutSkilinechLink><mobileAboutSkilinechLinkLabel><![CDATA[skiline.cc]]></mobileAboutSkilinechLinkLabel><mobileAboutSkilinechTitle><![CDATA[Skiline]]></mobileAboutSkilinechTitle><mobileAboutSkilineContent><![CDATA[Interactive and live panoramic visionExperience 360° panorama images live in unprecedented quality! By means of our highly precise photographytechnology we give our users the chance to enjoy fascinating colours from everywhere on computers, smart phones and tablets.Up to 100 images are shot every day, so don’t hesitate to try the &#34;Movie&#34;-Button! We also recommend you to have a look at ourpanoramas on your computer for more exciting features on skiline.cc!Our PANOMAX 360° Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. That is why it is already used in cities and on the countryside, as well as on mountains, near rivers and the sea.The image of up to 66 million pixels creates the illusion of really being there.On large computer screens users can discover the environment without any limits by means of interactive hot spots which provide information and entertainment via image, video and text.Want more? Visit us on our webpage:]]></mobileAboutSkilineContent><mobileAboutSkilineLink><![CDATA[http://www.skiline.cc]]></mobileAboutSkilineLink><mobileAboutSkilineLinkLabel><![CDATA[skiline.cc]]></mobileAboutSkilineLinkLabel><mobileAboutSkilineTitle><![CDATA[Skiline]]></mobileAboutSkilineTitle><mobileAboutSkiwelt_wilder_kaiserContent><![CDATA[Interactive and live panoramic visionExperience 360° panorama images live in unprecedented quality! By means of our highly precise photographytechnology we give our users the chance to enjoy fascinating colours from everywhere on computers, smart phones and tablets.Up to 100 images are shot every day, so don’t hesitate to try the &#34;Movie&#34;-Button! We also recommend you to have a look at ourpanoramas on your computer for more exciting features on panomax.com!Our PANOMAX 360° Livecam is a rotating camera which creates a seamless panorama with perfect exposure underall conditions. That is why it is already used in cities and on the countryside, as well as on mountains, near rivers and the sea.The image of up to 66 million pixels creates the illusion of really being there.On large computer screens users can discover the environment without any limits by means of interactive hot spots which provide information and entertainment via image, video and text.Want more? Visit us on our webpage:]]></mobileAboutSkiwelt_wilder_kaiserContent><mobileAboutSkiwelt_wilder_kaiserLink><![CDATA[http://www.panomax.com]]></mobileAboutSkiwelt_wilder_kaiserLink><mobileAboutSkiwelt_wilder_kaiserLinkLabel><![CDATA[panomax.com]]></mobileAboutSkiwelt_wilder_kaiserLinkLabel><mobileAboutSkiwelt_wilder_kaiserTitle><![CDATA[Panomax]]></mobileAboutSkiwelt_wilder_kaiserTitle><mobileAlreadyLoggedIn><![CDATA[You are already logged in]]></mobileAlreadyLoggedIn><mobileAskNotLoginAllowed><![CDATA[You are not authorized. Log in now?]]></mobileAskNotLoginAllowed><mobileAskViewAllowed><![CDATA[View allowed]]></mobileAskViewAllowed><mobileAvisecAppName><![CDATA[avisec ag]]></mobileAvisecAppName><mobileBadConnection><![CDATA[It is recommended to use this app with at least 3G connectivity]]></mobileBadConnection><mobileDownloadImageSaved><![CDATA[The panorama was saved to your camera roll]]></mobileDownloadImageSaved><mobileDownloadImageTitle><![CDATA[Download]]></mobileDownloadImageTitle><mobileErrorLoadingInstanceList><![CDATA[An error occured while loading the camera list. Please retry later using a better internet connection.]]></mobileErrorLoadingInstanceList><mobileErrorLoadingInstanceNotFound><![CDATA[The requested camera could not be found]]></mobileErrorLoadingInstanceNotFound><mobileErrorLocalStorageForbidden><![CDATA[An error occured while loading the camera list. Please allow this site to store data locally (e.g. do not use &#34;Private Mode&#34;).]]></mobileErrorLocalStorageForbidden><mobileErrorNavFirst><![CDATA[You have already reached the beginning of the archive]]></mobileErrorNavFirst><mobileErrorNavLast><![CDATA[You have already reached the end of the archive]]></mobileErrorNavLast><mobileErrorNoInstance><![CDATA[No cameras to display]]></mobileErrorNoInstance><mobileErrorOffline><![CDATA[Your device is offline, you need a network connection to use this app!]]></mobileErrorOffline><mobileErrorShareFailed><![CDATA[Could not share]]></mobileErrorShareFailed><mobileErrorUnknownInstance><![CDATA[The requested camera was not found]]></mobileErrorUnknownInstance><mobileFlycamAppName><![CDATA[FLYCAM Ltd.]]></mobileFlycamAppName><mobileLastUpdate><![CDATA[Last Update]]></mobileLastUpdate><mobileLiveactAppName><![CDATA[Panomax]]></mobileLiveactAppName><mobileLoadingPreview><![CDATA[Loading...]]></mobileLoadingPreview><mobileLoadStepPaused><![CDATA[Problems loading camera, please stand by or try again later...]]></mobileLoadStepPaused><mobileLoadStepStopped><![CDATA[Could not load camera, please try again later]]></mobileLoadStepStopped><mobileLoggedIn><![CDATA[Logged in]]></mobileLoggedIn><mobileNoDownloadAllowed><![CDATA[Downloading not allowed]]></mobileNoDownloadAllowed><mobileNoLoginPossible><![CDATA[Could not log in]]></mobileNoLoginPossible><mobileNotLoggedIn><![CDATA[Not logged in]]></mobileNotLoggedIn><mobilePanomaxAppName><![CDATA[Panomax]]></mobilePanomaxAppName><mobilePanoramaMode><![CDATA[LiveCam]]></mobilePanoramaMode><mobilePassword><![CDATA[Password]]></mobilePassword><mobileSavingPicture><![CDATA[Saving picture...]]></mobileSavingPicture><mobileSkilineAppName><![CDATA[Skiline]]></mobileSkilineAppName><mobileSkilinechAppName><![CDATA[Skiline]]></mobileSkilinechAppName><mobileSkiwelt_wilder_kaiserAppName><![CDATA[Panomax]]></mobileSkiwelt_wilder_kaiserAppName><mobileTimelapseMode><![CDATA[Movie]]></mobileTimelapseMode><mobileUsername><![CDATA[User name]]></mobileUsername><mobileWrongCredentials><![CDATA[Wrong user name or password]]></mobileWrongCredentials><month><![CDATA[Month]]></month><more><![CDATA[More]]></more><moreTours><![CDATA[More tours]]></moreTours><moreToursOfShip><![CDATA[More tours of this ship]]></moreToursOfShip><mostRecent><![CDATA[most recent]]></mostRecent><mountainPeak><![CDATA[Mountain peaks]]></mountainPeak><next><![CDATA[Next]]></next><no><![CDATA[No]]></no><noHotSpotsFound><![CDATA[No matching Hot Spot found.]]></noHotSpotsFound><noPeaksFound><![CDATA[No matching peak found.]]></noPeaksFound><noPlacesFound><![CDATA[No matching city found.]]></noPlacesFound><northLetter><![CDATA[N]]></northLetter><noScript><![CDATA[JavaScript is disabled]]></noScript><noScriptCont><![CDATA[In order to run this application please activate JavaScript in your browser and reload the page!]]></noScriptCont><now><![CDATA[Current Image]]></now><ok><![CDATA[OK]]></ok><overviewMap><![CDATA[Overview Map]]></overviewMap><overviewMapLoading><![CDATA[Loading overview map...]]></overviewMapLoading><panoBegin><![CDATA[You have already reached the first image]]></panoBegin><panoDayLoadError><![CDATA[Could not get time information for panorama]]></panoDayLoadError><panoEnd><![CDATA[You have already reached the last image]]></panoEnd><panoGetError><![CDATA[Panorama could not be loaded]]></panoGetError><panoLoading><![CDATA[Loading panorama...]]></panoLoading><panoLoadingFailed><![CDATA[Loading of panorama failed!]]></panoLoadingFailed><panoNext><![CDATA[Next panorama]]></panoNext><panoNoImagesInDay><![CDATA[There are no images this day]]></panoNoImagesInDay><panoNotFound><![CDATA[Panorama not found]]></panoNotFound><panoNotFoundAlternative><![CDATA[The panorama you wanted to load was not found.The next best panorama was picked for you.]]></panoNotFoundAlternative><panoNoTimeNav><![CDATA[Can’t navigate through panoramas currently]]></panoNoTimeNav><panoPrev><![CDATA[Previous panorama]]></panoPrev><panoramaVideo><![CDATA[Panoramic video]]></panoramaVideo><panoramaVideoLink><![CDATA[Livevideo]]></panoramaVideoLink><panoSlider><![CDATA[Timeline]]></panoSlider><panoTileGetError><![CDATA[Could not retrieve panorama tile]]></panoTileGetError><panoTimeLapseAlreadyRunning><![CDATA[Time lapse is already running.]]></panoTimeLapseAlreadyRunning><panoTimeNavError><![CDATA[Time navigation]]></panoTimeNavError><password><![CDATA[Password]]></password><peakAlsoVisibleFrom><![CDATA[Also visible from]]></peakAlsoVisibleFrom><peakLabels><![CDATA[Peaks]]></peakLabels><peakLabelsElevationShow><![CDATA[Show elevation]]></peakLabelsElevationShow><peakLabelsSliderDistance><![CDATA[Distance]]></peakLabelsSliderDistance><peakLabelsSliderElevation><![CDATA[Elevation]]></peakLabelsSliderElevation><placesSearchPlaceholder><![CDATA[Search for places...]]></placesSearchPlaceholder><pleaseWait><![CDATA[Please wait]]></pleaseWait><polarlightIntensity><![CDATA[Intensity]]></polarlightIntensity><polarLights><![CDATA[Polar lights]]></polarLights><polarlightsNoDataAvailable><![CDATA[There is no polar lights data within this time range]]></polarlightsNoDataAvailable><previous><![CDATA[Previous]]></previous><printShopResolutionTooLow><![CDATA[Print shop: Resolution too low]]></printShopResolutionTooLow><printShopResolutionTooLowDescription><![CDATA[The resolution of the requested image is too low. This image cannot be printed in the highest quality because the upload of original images is delayed to save bandwidth. Please try again later.]]></printShopResolutionTooLowDescription><privacyPolicy><![CDATA[Data Protection Statement]]></privacyPolicy><privacyPolicyHref><![CDATA[https://www.panomax.com/en/datenschutz.html]]></privacyPolicyHref><psPrint><![CDATA[Print]]></psPrint><psShop><![CDATA[Shop]]></psShop><rangeDay><![CDATA[1 day]]></rangeDay><rangeHalfYear><![CDATA[6 months]]></rangeHalfYear><rangeMonth><![CDATA[1 month]]></rangeMonth><rangeWeek><![CDATA[1 week]]></rangeWeek><rangeYear><![CDATA[1 year]]></rangeYear><relatedCams><![CDATA[Related cams]]></relatedCams><reportFailure><![CDATA[Report failed]]></reportFailure><reportFailureDetails><![CDATA[Your report could not be sent. Please try again later.]]></reportFailureDetails><reportImage><![CDATA[Report this image]]></reportImage><reportImageDescription><![CDATA[If you have encountered inappropriate content in this image, you can report it to us.<br />The camera, the image time and (if selected) the current image section will be transmitted.]]></reportImageDescription><reportImageEmail><![CDATA[Enter your email address:]]></reportImageEmail><reportImageIssueChoice><![CDATA[Choose a reason:]]></reportImageIssueChoice><reportImageNoEmail><![CDATA[Please enter a correct e-mail address.]]></reportImageNoEmail><reportImageNoMessage><![CDATA[Please enter a message.]]></reportImageNoMessage><reportImagePrecisePosition><![CDATA[Send current image section]]></reportImagePrecisePosition><reportImageSend><![CDATA[Send report]]></reportImageSend><reportImageText><![CDATA[Please provide further information regarding your report:]]></reportImageText><reportSuccess><![CDATA[Report successfully sent]]></reportSuccess><reportSuccessDetails><![CDATA[Thank you for your report!]]></reportSuccessDetails><search><![CDATA[Search]]></search><searchDistance><![CDATA[Distance]]></searchDistance><searchFilter><![CDATA[Filter ...]]></searchFilter><searchHotspots><![CDATA[Hotspots]]></searchHotspots><searchMenu><![CDATA[Search]]></searchMenu><searchPlaces><![CDATA[Cities]]></searchPlaces><searchTime><![CDATA[Time]]></searchTime><searchZIP><![CDATA[ZIP]]></searchZIP><sendCard><![CDATA[Send E-Card]]></sendCard><serviceOffline><![CDATA[Website is currently under maintenance]]></serviceOffline><serviceOfflineCont><![CDATA[Please stay patient, we will be available again for you soon!]]></serviceOfflineCont><share><![CDATA[Share]]></share><shareExact><![CDATA[Selected frame of this image]]></shareExact><shareInstance><![CDATA[Live image of this camera]]></shareInstance><shareLiveImage><![CDATA[Share Live-Image]]></shareLiveImage><shareOnFacebook><![CDATA[Share on Facebook]]></shareOnFacebook><shareOnTwitter><![CDATA[Share on Twitter]]></shareOnTwitter><shareSelectContent><![CDATA[Please select what to share:]]></shareSelectContent><shareSelectPlatform><![CDATA[Please select a Social Network:]]></shareSelectPlatform><shareTime><![CDATA[Selected image]]></shareTime><shareView><![CDATA[This view]]></shareView><shareWindowTitle><![CDATA[Share panorama]]></shareWindowTitle><show><![CDATA[Show]]></show><showHotspots><![CDATA[Show Hot Spots]]></showHotspots><showLiveImage><![CDATA[Live-Image]]></showLiveImage><showMoreInfo><![CDATA[More infos]]></showMoreInfo><sortAge><![CDATA[sort by age]]></sortAge><sortAltitude><![CDATA[sort by altitude]]></sortAltitude><sortDistance><![CDATA[sort by distance]]></sortDistance><sortLatitude><![CDATA[sort by latitude]]></sortLatitude><sortLongitude><![CDATA[sort by longitude]]></sortLongitude><sortName><![CDATA[sort by name]]></sortName><southLetter><![CDATA[S]]></southLetter><thumbEmbedConfigurator><![CDATA[There are more options available in the <a>thumbnail configurator</a>.]]></thumbEmbedConfigurator><thumbEmbedExplanation><![CDATA[Embed panorama with link into HTML:]]></thumbEmbedExplanation><tilePreloaderLoading><![CDATA[Loading panorama data...]]></tilePreloaderLoading><timelapse><![CDATA[Time Lapse]]></timelapse><timelapseAll><![CDATA[all]]></timelapseAll><timelapseAllImages><![CDATA[All Images]]></timelapseAllImages><timelapseBuffering><![CDATA[Buffering...]]></timelapseBuffering><timelapseChooseFormat><![CDATA[Please choose your video format.]]></timelapseChooseFormat><timelapseChooseTimeframe><![CDATA[Please choose:]]></timelapseChooseTimeframe><timelapseClose><![CDATA[Close]]></timelapseClose><timelapseConfirmCancel><![CDATA[Do you want to cancel the time lapse?]]></timelapseConfirmCancel><timelapseConnectionError><![CDATA[Connection Error]]></timelapseConnectionError><timelapseCustom><![CDATA[Custom]]></timelapseCustom><timelapseCustomPeriod><![CDATA[Custom]]></timelapseCustomPeriod><timelapseDay><![CDATA[1 Day]]></timelapseDay><timelapseDefaultVideoOptions><![CDATA[$(fps) frames per second, default size, medium quality.]]></timelapseDefaultVideoOptions><timelapseDirect><![CDATA[<b>Direct<br>Time Lapse</b>]]></timelapseDirect><timelapseDisconnected><![CDATA[Disconnected]]></timelapseDisconnected><timelapseDownload><![CDATA[Download]]></timelapseDownload><timelapseDownloadable><![CDATA[<b>Downloadable<br>Time Lapse</b>]]></timelapseDownloadable><timelapseDownloadableVideoMessage><![CDATA[Your downloadable video is being generated.]]></timelapseDownloadableVideoMessage><timelapseDownloadableVideoTitle><![CDATA[Downloadable Video]]></timelapseDownloadableVideoTitle><timelapseDownloadVideo><![CDATA[Download video]]></timelapseDownloadVideo><timelapseFastforward><![CDATA[Fast forward]]></timelapseFastforward><timelapseFileError><![CDATA[Erroneous data]]></timelapseFileError><timelapseFpsTooHigh><![CDATA[The framerate you set is too high and will be adjusted accordingly.]]></timelapseFpsTooHigh><timelapseFpsTooLow><![CDATA[The framerate you set is too low and will be adjusted accordingly.]]></timelapseFpsTooLow><timelapseFramerate><![CDATA[Frame Rate:]]></timelapseFramerate><timelapseFramerateUnit><![CDATA[images per second]]></timelapseFramerateUnit><timelapseFrom><![CDATA[From]]></timelapseFrom><timelapseImageCount><![CDATA[images total]]></timelapseImageCount><timelapseImageCountTooHigh><![CDATA[The image count you set is too high and will be adjusted accordingly.]]></timelapseImageCountTooHigh><timelapseImageCountTooLow><![CDATA[The image count you set is too low and will be adjusted accordingly.]]></timelapseImageCountTooLow><timelapseImages><![CDATA[Images]]></timelapseImages><timelapseInProgress><![CDATA[Time lapse in progress]]></timelapseInProgress><timelapseIsNoPreset><![CDATA[For the parameters you chose there is no video prepared, yet. Generating this video will require extra time. Alternatively, you can use different settings like a day or 48h video.]]></timelapseIsNoPreset><timelapseLast24Hours><![CDATA[Last 24 hours]]></timelapseLast24Hours><timelapseLast48Hours><![CDATA[Last 48 hours]]></timelapseLast48Hours><timelapseLastMonth><![CDATA[Last month]]></timelapseLastMonth><timelapseLastWeek><![CDATA[Last week]]></timelapseLastWeek><timelapseLastYear><![CDATA[Last year]]></timelapseLastYear><timelapseLoading><![CDATA[Loading time lapse...]]></timelapseLoading><timelapseLoadingImages><![CDATA[Loading timelapse images...]]></timelapseLoadingImages><timelapseLoadingVideo><![CDATA[Loading - $(timelapseVideoPercent)%]]></timelapseLoadingVideo><timelapseMonth><![CDATA[1 Month]]></timelapseMonth><timelapseMultiply><![CDATA[x]]></timelapseMultiply><timelapseParamError><![CDATA[Input Error]]></timelapseParamError><timelapsePaused><![CDATA[Paused]]></timelapsePaused><timelapsePixel><![CDATA[Pixels]]></timelapsePixel><timelapsePlaying><![CDATA[Playing]]></timelapsePlaying><timelapsePrepareDirect><![CDATA[Preparing timelapse...]]></timelapsePrepareDirect><timelapseQuality><![CDATA[Quality]]></timelapseQuality><timelapseQualityTooHigh><![CDATA[The quality you set is too high and will be adjusted accordingly.]]></timelapseQualityTooHigh><timelapseQualityTooLow><![CDATA[The quality you set is too low and will be adjusted accordingly.]]></timelapseQualityTooLow><timelapseQualityUnit><![CDATA[%]]></timelapseQualityUnit><timelapseRecent><![CDATA[48h]]></timelapseRecent><timelapseRecentDescription><![CDATA[See the last 48 hours.]]></timelapseRecentDescription><timelapseRefresh><![CDATA[Refresh]]></timelapseRefresh><timelapseRewind><![CDATA[Rewind]]></timelapseRewind><timelapseSelectDay><![CDATA[Select Day:]]></timelapseSelectDay><timelapseSelectEndDay><![CDATA[Select end day:]]></timelapseSelectEndDay><timelapseSelectStartDay><![CDATA[Select start day:]]></timelapseSelectStartDay><timelapseShowError><![CDATA[Could not initialize time lapse, please try again later.]]></timelapseShowError><timelapseShowImages><![CDATA[Images]]></timelapseShowImages><timelapseShowInit><![CDATA[Initializing time lapse]]></timelapseShowInit><timelapseShowLoading><![CDATA[Loading time lapse data...]]></timelapseShowLoading><timelapseShowRangeError><![CDATA[The time range you selected does not support time lapse. Please choose a more recent range.]]></timelapseShowRangeError><timelapseSize><![CDATA[Size]]></timelapseSize><timelapseSizeTooHigh><![CDATA[The size you set is too big and will be adjusted accordingly.]]></timelapseSizeTooHigh><timelapseSizeTooLow><![CDATA[The size you set is too small and will be adjusted accordingly.]]></timelapseSizeTooLow><timelapseSizeUnit><![CDATA[pixels]]></timelapseSizeUnit><timelapseSpeed><![CDATA[Speed]]></timelapseSpeed><timelapseStart><![CDATA[Start!]]></timelapseStart><timelapseTime><![CDATA[Time]]></timelapseTime><timelapseTimeframeAndSpeed><![CDATA[Video period]]></timelapseTimeframeAndSpeed><timelapseTitle><![CDATA[Time Lapse]]></timelapseTitle><timelapseTo><![CDATA[To]]></timelapseTo><timelapseToday><![CDATA[Today]]></timelapseToday><timelapseUseCustomParams><![CDATA[change]]></timelapseUseCustomParams><timelapseVideo><![CDATA[Time Lapse Video]]></timelapseVideo><timelapseVideoDownloadFailed><![CDATA[The video download has failed unexpectedly.]]></timelapseVideoDownloadFailed><timelapseVideoFormat><![CDATA[Video format]]></timelapseVideoFormat><timelapseVideoFps><![CDATA[Images/sec.]]></timelapseVideoFps><timelapseVideoIsDownloading><![CDATA[Please wait for your video to download.]]></timelapseVideoIsDownloading><timelapseVideoMp4><![CDATA[MP4 Video]]></timelapseVideoMp4><timelapseVideoPreviewNotSupport><![CDATA[The browser does not support video preview.]]></timelapseVideoPreviewNotSupport><timelapseVideoQuality><![CDATA[Video quality]]></timelapseVideoQuality><timelapseVideoQualityHigh><![CDATA[high]]></timelapseVideoQualityHigh><timelapseVideoQualityLow><![CDATA[low]]></timelapseVideoQualityLow><timelapseVideoQualityMedium><![CDATA[medium]]></timelapseVideoQualityMedium><timelapseVideoRendering><![CDATA[Video is beeing rendered ...]]></timelapseVideoRendering><timelapseVideoRenderingFailed><![CDATA[Rendering of video failed!]]></timelapseVideoRenderingFailed><timelapseVideoWmv><![CDATA[WMV Video]]></timelapseVideoWmv><timelapseWeek><![CDATA[1 Week]]></timelapseWeek><timelapseYear><![CDATA[1 Year]]></timelapseYear><toggleFullScreen><![CDATA[Enter/leave full-screen mode]]></toggleFullScreen><togglePanoSlider><![CDATA[Open/close the Timeline]]></togglePanoSlider><toggleSearchMenu><![CDATA[Show/hide search.]]></toggleSearchMenu><trails><![CDATA[Trails]]></trails><ttAboutAvisec><![CDATA[About avisec ag]]></ttAboutAvisec><ttAboutFlycam><![CDATA[About FLYCAM Ltd.]]></ttAboutFlycam><ttAboutLiveact><![CDATA[About PANOMAX]]></ttAboutLiveact><ttAboutPanomax><![CDATA[About PANOMAX]]></ttAboutPanomax><ttAboutSkiline><![CDATA[About SKILINE PANORAMA]]></ttAboutSkiline><ttAboutSkilinech><![CDATA[About SKILINE PANORAMA]]></ttAboutSkilinech><ttArchive><![CDATA[Browse the interactive archive]]></ttArchive><ttAutoPanOff><![CDATA[Stop rotation]]></ttAutoPanOff><ttAutoPanOn><![CDATA[Start rotation]]></ttAutoPanOn><ttBack><![CDATA[Show previous image]]></ttBack><ttBestShots><![CDATA[Gallery of best shots]]></ttBestShots><ttComparePano><![CDATA[Compare two timestamps of this cam]]></ttComparePano><ttDownloadCurrentImage><![CDATA[Download current panorama]]></ttDownloadCurrentImage><ttEcard><![CDATA[Send this panorama to a friend]]></ttEcard><ttEnterFullscreen><![CDATA[Full-screen mode]]></ttEnterFullscreen><ttExitFullscreen><![CDATA[Exit full-screen mode]]></ttExitFullscreen><ttFacebookShare><![CDATA[Post panorama on Facebook]]></ttFacebookShare><ttFwd><![CDATA[Show next image]]></ttFwd><ttLink><![CDATA[Get link to panorama]]></ttLink><ttLinkEmbed><![CDATA[Link to panorama or embed as HTML]]></ttLinkEmbed><ttNow><![CDATA[Show current live image]]></ttNow><ttOverviewMap><![CDATA[Shows the geographic overview map]]></ttOverviewMap><ttPeakLabelsHide><![CDATA[Hide peaks]]></ttPeakLabelsHide><ttPeakLabelsShow><![CDATA[Show peaks]]></ttPeakLabelsShow><ttpolarLights><![CDATA[show polar lights]]></ttpolarLights><ttShareExact><![CDATA[Link opens the currently shown frame of the panorama]]></ttShareExact><ttShareInstance><![CDATA[Link opens the camera's live image]]></ttShareInstance><ttSharePeak><![CDATA[Link opens with selected peak]]></ttSharePeak><ttShareTime><![CDATA[Link opens the image of the selected point of time]]></ttShareTime><ttShareView><![CDATA[Link opens the camera's live image]]></ttShareView><ttSocialNetwork><![CDATA[Share this panorama in a Social Network]]></ttSocialNetwork><ttStartTimelapse><![CDATA[Start time lapse]]></ttStartTimelapse><ttStopTimelapse><![CDATA[Stop time lapse]]></ttStopTimelapse><ttTimelapseHide><![CDATA[Stop timelapse]]></ttTimelapseHide><ttTimelapseMP4><![CDATA[<small>Can be previewed in the browser and is viewable using Apple Quicktime <br>and a wide range of other video playback software.</small>]]></ttTimelapseMP4><ttTimelapseShow><![CDATA[Play timelapse]]></ttTimelapseShow><ttTimelapseVideo><![CDATA[Get downloadable time-lapse video]]></ttTimelapseVideo><ttTimelapseWMV><![CDATA[Viewable using Windows Media Player]]></ttTimelapseWMV><ttTweet><![CDATA[Twitter panorama]]></ttTweet><ttVessels><![CDATA[Show information about vessels]]></ttVessels><tweet><![CDATA[Twitter]]></tweet><unitDegreeCelsius><![CDATA[°C]]></unitDegreeCelsius><unitDegrees><![CDATA[°]]></unitDegrees><unitKilometer><![CDATA[km]]></unitKilometer><unitKilometersPerHour><![CDATA[km/h]]></unitKilometersPerHour><unitKnots><![CDATA[kn]]></unitKnots><unitMeter><![CDATA[m]]></unitMeter><unitMeters><![CDATA[m]]></unitMeters><unitRainMm><![CDATA[l/m²]]></unitRainMm><unsupBrowser><![CDATA[Unsupported or outdated browser]]></unsupBrowser><unsupBrowserCont><![CDATA[Unfortunately the browser you are using is either outdated or not supported, please consider an upgrade or choose another browser to run this application.]]></unsupBrowserCont><unsupMobile><![CDATA[Unfortunately at the moment there's no possibility to view our panoramas on mobile devices.]]></unsupMobile><unsupMobileBrowser><![CDATA[Unsupported Browser]]></unsupMobileBrowser><unsupMobileBrowserCont><![CDATA[Unfortunately the browser you are using is not supported, please use a WebKit browser, for example Chrome, Android or Safari!]]></unsupMobileBrowserCont><username><![CDATA[User name]]></username><vers><![CDATA[Version]]></vers><vesselCourse><![CDATA[Course]]></vesselCourse><vesselDestination><![CDATA[Destination]]></vesselDestination><vesselDraught><![CDATA[Draught]]></vesselDraught><vesselEta><![CDATA[Estimated time of arrival]]></vesselEta><vesselLength><![CDATA[Length]]></vesselLength><vessels><![CDATA[Vessels]]></vessels><vesselsMoreInfo><![CDATA[More info]]></vesselsMoreInfo><vesselSpeed><![CDATA[Speed]]></vesselSpeed><vesselWidth><![CDATA[Width]]></vesselWidth><video><![CDATA[Live video]]></video><videoEmbedTitle><![CDATA[Embed video on HTML page:]]></videoEmbedTitle><videoLoading><![CDATA[Loading video ...]]></videoLoading><weather><![CDATA[Weather]]></weather><weatherAmountOfRain><![CDATA[quantity of rainfall]]></weatherAmountOfRain><weatherChanceOfRain><![CDATA[Chance of rain]]></weatherChanceOfRain><weatherChanceOfSnow><![CDATA[Chance of snow]]></weatherChanceOfSnow><weatherChanceOfStorm><![CDATA[Chance of storm]]></weatherChanceOfStorm><weatherChanceOfTStorm><![CDATA[Chance of thunderstorm]]></weatherChanceOfTStorm><weatherClickForMore><![CDATA[click for more weather info]]></weatherClickForMore><weatherCloudy><![CDATA[Cloudy]]></weatherCloudy><weatherCondition><![CDATA[Weather conditions]]></weatherCondition><weatherCopyright><![CDATA[Source: © Copyright $(holder)]]></weatherCopyright><weatherDataAndForecasts><![CDATA[Weather data & forecasts]]></weatherDataAndForecasts><weatherDust><![CDATA[Dust]]></weatherDust><weatherFlurries><![CDATA[Flurries]]></weatherFlurries><weatherFog><![CDATA[Fog]]></weatherFog><weatherForecast><![CDATA[Forecast]]></weatherForecast><weatherHaze><![CDATA[Haze]]></weatherHaze><weatherHistoric><![CDATA[Historic]]></weatherHistoric><weatherHistoricCondition><![CDATA[Historic conditions]]></weatherHistoricCondition><weatherHistoricValue><![CDATA[Historic value]]></weatherHistoricValue><weatherHistory><![CDATA[History]]></weatherHistory><weatherHoursOfSun><![CDATA[hours of sun]]></weatherHoursOfSun><weatherHoursUnit><![CDATA[h]]></weatherHoursUnit><weatherHumidityPc><![CDATA[Humidity]]></weatherHumidityPc><weatherIcy><![CDATA[Icy]]></weatherIcy><weatherMist><![CDATA[Mist]]></weatherMist><weatherMore><![CDATA[[more]]]></weatherMore><weatherMostlyCloudy><![CDATA[Mostly cloudy]]></weatherMostlyCloudy><weatherMostlySunny><![CDATA[Mostly sunny]]></weatherMostlySunny><weatherMountain><![CDATA[Mountain]]></weatherMountain><weatherMountainC><![CDATA[Maintain temperature]]></weatherMountainC><weatherNoDataAvailable><![CDATA[No weather data is available for this period.]]></weatherNoDataAvailable><weatherNow><![CDATA[Current]]></weatherNow><weatherNowCondition><![CDATA[Current conditions]]></weatherNowCondition><weatherNowValue><![CDATA[Current value]]></weatherNowValue><weatherPartlyCloudy><![CDATA[Partly cloudy]]></weatherPartlyCloudy><weatherProbabilityOfRain><![CDATA[probability of rain]]></weatherProbabilityOfRain><weatherRain><![CDATA[Rain]]></weatherRain><weatherRainCm><![CDATA[Rain]]></weatherRainCm><weatherSleet><![CDATA[Sleet]]></weatherSleet><weatherSmoke><![CDATA[Smoke]]></weatherSmoke><weatherSnow><![CDATA[Snow]]></weatherSnow><weatherSnowdepthCm><![CDATA[Snow depth]]></weatherSnowdepthCm><weatherSnowfallCm><![CDATA[Snowfall]]></weatherSnowfallCm><weatherStorm><![CDATA[Storm]]></weatherStorm><weatherSunny><![CDATA[Sunny]]></weatherSunny><weatherTemp><![CDATA[Temperature]]></weatherTemp><weatherTempC><![CDATA[Temperature]]></weatherTempC><weatherTempHighC><![CDATA[Maximum temperature]]></weatherTempHighC><weatherTempLowC><![CDATA[Minimum temperature]]></weatherTempLowC><weatherThunderstorm><![CDATA[Thunderstorm]]></weatherThunderstorm><weatherToday><![CDATA[Today]]></weatherToday><weatherTomorrow><![CDATA[Tomorrow]]></weatherTomorrow><weatherValley><![CDATA[Valley]]></weatherValley><weatherValleyC><![CDATA[Valley temperature]]></weatherValleyC><weatherWind><![CDATA[Wind]]></weatherWind><weatherWindDirectionDeg><![CDATA[Wind direction]]></weatherWindDirectionDeg><weatherWindSpeedKmh><![CDATA[Wind speed]]></weatherWindSpeedKmh><weatherWindSpeedMaxKmh><![CDATA[Maximum wind speed]]></weatherWindSpeedMaxKmh><weatherWindSpeedMinKmh><![CDATA[Minimum wind speed]]></weatherWindSpeedMinKmh><weekStarts><![CDATA[0]]></weekStarts><westLetter><![CDATA[W]]></westLetter><windrose><![CDATA[Wind rose]]></windrose><windSpeedInKmh><![CDATA[Wind speed in km/h]]></windSpeedInKmh><windSpeedInKn><![CDATA[Wind speed in knots]]></windSpeedInKn><year><![CDATA[Year]]></year><yes><![CDATA[Yes]]></yes></data>    </script>
+
+</body>
+
+</html>
