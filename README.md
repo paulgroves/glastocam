@@ -3,3 +3,25 @@
 Fullscreen version of Glasto webcam - https://glastocam.foobarlol.lol
 
 Love the farm, leave no trace 💚
+
+## Backend API
+
+A Rust Actix-web backend API.
+
+### Prerequisites
+
+- [Rust](https://rustup.rs/) (latest stable)
+
+### Running the API
+
+```bash
+cargo run
+```
+
+The server will start at `http://127.0.0.1:8080`
+
+### Endpoints
+
+- `GET /` - Returns "Hello, World!"
+- `GET /health` - Health check endpoint, returns "OK"
+
