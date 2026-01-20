@@ -1,15 +1,70 @@
 <html>
-
 <head>
   <title>Glastocam</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
+      padding: 20px;
       overflow: scroll;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
+    .image-container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: 16px;
+      max-width: 100%;
+    }
+    .image-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .image-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+    .live-badge {
+      background: #e53935;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
     #camimage {
       display: block;
+      border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+    }
+    .image-footer {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e0e0e0;
+      color: #666;
+      font-size: 0.875rem;
+      text-align: center;
     }
   </style>
   <script>
@@ -17,23 +72,27 @@
       const img = document.getElementById("camimage");
       img.src = "https://panodata.panomax.com/cams/879/recent_full.jpg?ts=" + new Date().getTime();
     }
-
     window.onload = function () {
       reloadImage();
-
       document.getElementById("camimage").onload = function () {
         const scrollX = (document.body.scrollWidth - window.innerWidth) / 4;
         const scrollY = document.body.scrollHeight;
         window.scrollTo(scrollX, scrollY);
       };
-
       setInterval(reloadImage, 300000);
     };
   </script>
 </head>
-
 <body>
-  <img id="camimage" src="" alt="Webcam image">
+  <div class="image-container">
+    <div class="image-header">
+      <h1 class="image-title">Glastocam</h1>
+      <span class="live-badge">● Live</span>
+    </div>
+    <img id="camimage" src="" alt="Webcam image">
+    <div class="image-footer">
+      Updates every 5 minutes
+    </div>
+  </div>
 </body>
-
 </html>
