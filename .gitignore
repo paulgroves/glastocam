@@ -1,0 +1,14 @@
+# Rust build artifacts
+/backend/target/
+/backend/Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
