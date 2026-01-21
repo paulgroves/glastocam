@@ -1,0 +1,18 @@
+# Rust build artifacts
+/backend/target/
+backend/target/
+
+# Cargo lock file can be committed for applications
+# Cargo.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
