@@ -1,0 +1,14 @@
+# Rust/Cargo build artifacts
+backend/target/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
